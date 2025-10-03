@@ -5,9 +5,10 @@ import pe.edu.upc.inmovisiom.entities.Rol;
 import java.util.List;
 
 public interface IRolService {
-    void insert(Rol rol);
-    List<Rol> list();
-    Rol listId(int id);
-    void delete(int id);
-    void update(Rol rol);
+    public List<Rol> list();
+    public void insert(Rol rol);
+    public Rol listId(int id);
+    public void delete(int rol);
+    public void update(Rol rol);
+    Rol listId(Integer id);
 }
