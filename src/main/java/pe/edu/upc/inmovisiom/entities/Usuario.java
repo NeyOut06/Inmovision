@@ -2,12 +2,13 @@ package pe.edu.upc.inmovisiom.entities;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "Usuario")
-public class Usuario
+public class Usuario implements Serializable
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,8 +23,11 @@ public class Usuario
     @Column(name = "correo", length = 150, nullable = false)
     private String correo;
 
-    @Column(name = "contrasenia", length = 255, nullable = false)
-    private String contrasenia;
+    @Column(length = 30, unique = true)
+    private String username;
+
+    @Column(name = "password", length = 200, nullable = false)
+    private String password;
 
     @Column(name = "telefono", length = 9, nullable = false)
     private String telefono;
@@ -33,6 +37,11 @@ public class Usuario
 
     @Column(name = "fecha_registro", nullable = false)
     private LocalDate fecha_registro;
+    private Boolean enabled;
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private List<Rol> roles;
 
     public int getIdUsuario() {
         return idUser;
@@ -41,12 +50,12 @@ public class Usuario
     public Usuario() {
     }
 
-    public Usuario(int idUser, String nombre, String apellido, String correo, String contrasenia, String telefono, String fotourl, LocalDate fecha_registro) {
+    public Usuario(int idUser, String nombre, String apellido, String correo, String password, String telefono, String fotourl, LocalDate fecha_registro) {
         this.idUser = idUser;
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
-        this.contrasenia = contrasenia;
+        this.password = password;
         this.telefono = telefono;
         this.fotourl = fotourl;
         this.fecha_registro = fecha_registro;
@@ -84,12 +93,12 @@ public class Usuario
         this.correo = correo;
     }
 
-    public String getContrasenia() {
-        return contrasenia;
+    public String getPassword() {
+        return password;
     }
 
-    public void setContrasenia(String contrasenia) {
-        this.contrasenia = contrasenia;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getTelefono() {
@@ -114,5 +123,29 @@ public class Usuario
 
     public void setFecha_registro(LocalDate fecha_registro) {
         this.fecha_registro = fecha_registro;
+    }
+
+    public List<Rol> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Rol> roles) {
+        this.roles = roles;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }
