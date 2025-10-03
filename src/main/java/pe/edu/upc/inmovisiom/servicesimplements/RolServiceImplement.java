@@ -7,35 +7,36 @@ import pe.edu.upc.inmovisiom.repositories.IRolRepository;
 import pe.edu.upc.inmovisiom.servicesinterfaces.IRolService;
 
 import java.util.List;
-
 @Service
 public class RolServiceImplement implements IRolService {
-
     @Autowired
-    private IRolRepository rR;
+    private IRolRepository rS;
 
     @Override
-    public void insert(Rol rol) {
-        rR.save(rol);
-    }
+    public List<Rol> list(){return rS.findAll();}
 
     @Override
-    public List<Rol> list() {
-        return rR.findAll();
-    }
+    public void insert(Rol rol){rS.save(rol);}
 
     @Override
     public Rol listId(int id) {
-        return rR.findById(id).orElse(null);
+        return rS.findById(id).orElse(null);
     }
 
     @Override
-    public void delete(int id) {
-        rR.deleteById(id);
+    public void delete(int rol) {
+        rS.deleteById(rol);
     }
 
     @Override
     public void update(Rol rol) {
-        rR.save(rol);
+        rS.save(rol);
     }
+
+    @Override
+    public Rol listId(Integer id) {
+        return rS.findById(id).orElse(null);
+    }
+
+
 }
