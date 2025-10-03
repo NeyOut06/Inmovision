@@ -1,9 +1,12 @@
 package pe.edu.upc.inmovisiom.dtos;
 
+import pe.edu.upc.inmovisiom.entities.Usuario;
+
 public class RolDTO {
     private int idRol;
     private String nombre;
-    private String descripcion;
+    private Usuario usuario;
+
 
     public int getIdRol() {
         return idRol;
@@ -21,11 +24,11 @@ public class RolDTO {
         this.nombre = nombre;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

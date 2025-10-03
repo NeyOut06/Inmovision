@@ -2,7 +2,7 @@ package pe.edu.upc.inmovisiom.dtos;
 import java.time.LocalDate;
 
 public class UsuarioDTOList {
-
+    private int idUser;
     private String nombre;
     private String apellido;
     private String correo;

@@ -1,17 +1,23 @@
 package pe.edu.upc.inmovisiom.dtos;
 
+import pe.edu.upc.inmovisiom.entities.Rol;
+
 import java.time.LocalDate;
+import java.util.List;
 
 public class UsuarioDTOInsert {
-
     private int idUser;
     private String nombre;
     private String apellido;
     private String correo;
-    private String contrasenia;
+    private String username;
+    private String password;
     private String telefono;
     private String fotourl;
     private LocalDate fecha_registro;
+    private Boolean enabled;
+
+
 
     public int getIdUser() {
         return idUser;
@@ -45,12 +51,20 @@ public class UsuarioDTOInsert {
         this.correo = correo;
     }
 
-    public String getContrasenia() {
-        return contrasenia;
+    public String getUsername() {
+        return username;
     }
 
-    public void setContrasenia(String contrasenia) {
-        this.contrasenia = contrasenia;
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getTelefono() {
@@ -76,4 +90,13 @@ public class UsuarioDTOInsert {
     public void setFecha_registro(LocalDate fecha_registro) {
         this.fecha_registro = fecha_registro;
     }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
 }
