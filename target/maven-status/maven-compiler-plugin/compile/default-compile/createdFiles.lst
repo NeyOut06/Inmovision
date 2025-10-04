@@ -1,5 +1,6 @@
 pe\edu\upc\inmovisiom\entities\Pago.class
 pe\edu\upc\inmovisiom\servicesimplements\CalificacionServiceImplement.class
+pe\edu\upc\inmovisiom\controllers\HealthController.class
 pe\edu\upc\inmovisiom\entities\Usuario.class
 pe\edu\upc\inmovisiom\dtos\SimulacionPrecioDTO.class
 pe\edu\upc\inmovisiom\servicesimplements\RolServiceImplement.class
