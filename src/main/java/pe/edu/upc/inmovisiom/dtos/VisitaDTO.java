@@ -6,18 +6,17 @@ import pe.edu.upc.inmovisiom.entities.Usuario;
 import java.time.LocalDate;
 
 public class VisitaDTO {
-    private int idVisita;
+    private Integer idVisita;
     private LocalDate fechaHora;
     private String estado;
     private Usuario usuario;
     private Propiedad propiedad;
-    private Usuario usuarioRegistro;
 
-    public int getIdVisita() {
+    public Integer getIdVisita() {
         return idVisita;
     }
 
-    public void setIdVisita(int idVisita) {
+    public void setIdVisita(Integer idVisita) {
         this.idVisita = idVisita;
     }
 
@@ -53,11 +52,5 @@ public class VisitaDTO {
         this.propiedad = propiedad;
     }
 
-    public Usuario getUsuarioRegistro() {
-        return usuarioRegistro;
-    }
 
-    public void setUsuarioRegistro(Usuario usuarioRegistro) {
-        this.usuarioRegistro = usuarioRegistro;
-    }
 }

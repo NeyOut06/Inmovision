@@ -8,7 +8,7 @@ public class Comparacion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idComparacion;
+    private Integer idComparacion;
 
     @ManyToOne
     @JoinColumn(name = "idUsuario", nullable = false)
@@ -19,11 +19,11 @@ public class Comparacion {
 
     public Comparacion() {}
 
-    public int getIdComparacion() {
+    public Integer getIdComparacion() {
         return idComparacion;
     }
 
-    public void setIdComparacion(int idComparacion) {
+    public void setIdComparacion(Integer idComparacion) {
         this.idComparacion = idComparacion;
     }
 

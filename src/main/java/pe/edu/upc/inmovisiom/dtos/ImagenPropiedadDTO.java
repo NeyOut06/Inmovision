@@ -3,16 +3,16 @@ package pe.edu.upc.inmovisiom.dtos;
 import pe.edu.upc.inmovisiom.entities.Propiedad;
 
 public class ImagenPropiedadDTO {
-    private int idImagen;
+    private Integer idImagen;
     private String urlImagen;
     private String descripcion;
     private Propiedad propiedad;
 
-    public int getIdImagen() {
+    public Integer getIdImagen() {
         return idImagen;
     }
 
-    public void setIdImagen(int idImagen) {
+    public void setIdImagen(Integer idImagen) {
         this.idImagen = idImagen;
     }
 

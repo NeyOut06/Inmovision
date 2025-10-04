@@ -10,7 +10,7 @@ public class Rol implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idRol;
+    private Integer idRol;
 
     @Column(name = "nombre", length = 50, nullable = false)
     private String nombre;
@@ -21,11 +21,11 @@ public class Rol implements Serializable {
 
     public Rol() {}
 
-    public int getIdRol() {
+    public Integer getIdRol() {
         return idRol;
     }
 
-    public void setIdRol(int idRol) {
+    public void setIdRol(Integer idRol) {
         this.idRol = idRol;
     }
 

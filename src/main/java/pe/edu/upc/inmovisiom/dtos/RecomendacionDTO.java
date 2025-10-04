@@ -1,22 +1,22 @@
 package pe.edu.upc.inmovisiom.dtos;
 
-import pe.edu.upc.inmovisiom.entities.Propiedad;
 import pe.edu.upc.inmovisiom.entities.Usuario;
+import pe.edu.upc.inmovisiom.entities.Propiedad;
 
 import java.time.LocalDate;
 
 public class RecomendacionDTO {
-    private int idRecomendacion;
+    private Integer idRecomendacion;
     private String motivo;
     private LocalDate fecha;
     private Usuario usuario;
     private Propiedad propiedad;
 
-    public int getIdRecomendacion() {
+    public Integer getIdRecomendacion() {
         return idRecomendacion;
     }
 
-    public void setIdRecomendacion(int idRecomendacion) {
+    public void setIdRecomendacion(Integer idRecomendacion) {
         this.idRecomendacion = idRecomendacion;
     }
 

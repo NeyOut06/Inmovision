@@ -1,7 +1,6 @@
 package pe.edu.upc.inmovisiom.entities;
 
 import jakarta.persistence.*;
-
 import java.time.LocalDate;
 
 @Entity
@@ -10,7 +9,7 @@ public class Pago {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idPago;
+    private Integer idPago;
 
     @Column(name = "fecha_pago", nullable = false)
     private LocalDate fechaPago;
@@ -34,11 +33,11 @@ public class Pago {
 
     public Pago() {}
 
-    public int getIdPago() {
+    public Integer getIdPago() {
         return idPago;
     }
 
-    public void setIdPago(int idPago) {
+    public void setIdPago(Integer idPago) {
         this.idPago = idPago;
     }
 

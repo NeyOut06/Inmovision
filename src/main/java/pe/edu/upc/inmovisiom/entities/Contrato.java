@@ -1,7 +1,7 @@
 package pe.edu.upc.inmovisiom.entities;
 
 import jakarta.persistence.*;
-
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
@@ -10,7 +10,7 @@ public class Contrato {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idContrato;
+    private Integer idContrato;
 
     @Column(name = "tipo", length = 30, nullable = false)
     private String tipo;
@@ -38,11 +38,11 @@ public class Contrato {
 
     public Contrato() {}
 
-    public int getIdContrato() {
+    public Integer getIdContrato() {
         return idContrato;
     }
 
-    public void setIdContrato(int idContrato) {
+    public void setIdContrato(Integer idContrato) {
         this.idContrato = idContrato;
     }
 

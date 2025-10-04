@@ -1,7 +1,6 @@
 package pe.edu.upc.inmovisiom.entities;
 
 import jakarta.persistence.*;
-
 import java.time.LocalDate;
 
 @Entity
@@ -10,7 +9,7 @@ public class Recomendacion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idRecomendacion;
+    private Integer idRecomendacion;
 
     @Column(name = "motivo", length = 200, nullable = false)
     private String motivo;
@@ -28,11 +27,11 @@ public class Recomendacion {
 
     public Recomendacion() {}
 
-    public int getIdRecomendacion() {
+    public Integer getIdRecomendacion() {
         return idRecomendacion;
     }
 
-    public void setIdRecomendacion(int idRecomendacion) {
+    public void setIdRecomendacion(Integer idRecomendacion) {
         this.idRecomendacion = idRecomendacion;
     }
 

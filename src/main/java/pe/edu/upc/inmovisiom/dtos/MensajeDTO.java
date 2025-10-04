@@ -1,25 +1,25 @@
 package pe.edu.upc.inmovisiom.dtos;
 
-import pe.edu.upc.inmovisiom.entities.Propiedad;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import pe.edu.upc.inmovisiom.entities.Usuario;
-
+import pe.edu.upc.inmovisiom.entities.Propiedad;
 import java.time.LocalDate;
 
 public class MensajeDTO {
 
-    private int idMensaje;
+    private Integer idMensaje;
     private String contenido;
     private String enviadoPor;
     private LocalDate enviadoEn;
-
+    @JsonIgnoreProperties({"roles", "username", "password", "apellido", "telefono fotourl", "fecha_registro", "correo", "telefono", "fotourl","enabled"})
     private Usuario usuario;
     private Propiedad propiedad;
 
-    public int getIdMensaje() {
+    public Integer getIdMensaje() {
         return idMensaje;
     }
 
-    public void setIdMensaje(int idMensaje) {
+    public void setIdMensaje(Integer idMensaje) {
         this.idMensaje = idMensaje;
     }
 

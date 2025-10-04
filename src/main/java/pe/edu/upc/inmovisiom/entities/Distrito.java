@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class Distrito {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idDistrito;
+    private Integer idDistrito;
 
     @Column(name = "nombreDistrito",length = 50, nullable = false)
     private String nombreDistrito;
@@ -31,11 +31,11 @@ public class Distrito {
         this.departamentoDistrito = departamentoDistrito;
     }
 
-    public int getIdDistrito() {
+    public Integer getIdDistrito() {
         return idDistrito;
     }
 
-    public void setIdDistrito(int idDistrito) {
+    public void setIdDistrito(Integer idDistrito) {
         this.idDistrito = idDistrito;
     }
 

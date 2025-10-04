@@ -1,16 +1,16 @@
 package pe.edu.upc.inmovisiom.dtos;
 
 public class DistritoDTO {
-    private int idDistrito;
+    private Integer idDistrito;
     private String nombreDistrito;
     private String provinciaDistrito;
     private String departamentoDistrito;
 
-    public int getIdDistrito() {
+    public Integer getIdDistrito() {
         return idDistrito;
     }
 
-    public void setIdDistrito(int idDistrito) {
+    public void setIdDistrito(Integer idDistrito) {
         this.idDistrito = idDistrito;
     }
 
