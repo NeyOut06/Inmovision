@@ -1,4 +1,4 @@
-FROM amazoncorretto:21-alpine-jdk
+FROM amazoncorretto:24-alpine-jdk
 WORKDIR /app
 
 COPY target/Inmovision-0.0.1-SNAPSHOT.jar app.jar
