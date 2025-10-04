@@ -1,17 +1,19 @@
 package pe.edu.upc.inmovisiom.dtos;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import pe.edu.upc.inmovisiom.entities.Usuario;
 
 public class ComparacionDTO {
-    private int idComparacion;
+    private Integer idComparacion;
+    @JsonIgnoreProperties({"roles", "username", "password", "apellido", "telefono fotourl", "fecha_registro", "correo", "telefono", "fotourl","enabled"})
     private Usuario usuario;
     private String propiedades;
 
-    public int getIdComparacion() {
+    public Integer getIdComparacion() {
         return idComparacion;
     }
 
-    public void setIdComparacion(int idComparacion) {
+    public void setIdComparacion(Integer idComparacion) {
         this.idComparacion = idComparacion;
     }
 

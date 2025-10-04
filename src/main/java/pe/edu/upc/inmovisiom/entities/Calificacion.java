@@ -4,6 +4,7 @@ package pe.edu.upc.inmovisiom.entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "calificacion")
@@ -11,7 +12,7 @@ public class Calificacion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idCalificacion;
+    private Integer idCalificacion;
 
     @Column(name = "puntuacion", nullable = false)
     private int puntuacion;
@@ -32,11 +33,11 @@ public class Calificacion {
 
     public Calificacion() {}
 
-    public int getIdCalificacion() {
+    public Integer getIdCalificacion() {
         return idCalificacion;
     }
 
-    public void setIdCalificacion(int idCalificacion) {
+    public void setIdCalificacion(Integer idCalificacion) {
         this.idCalificacion = idCalificacion;
     }
 

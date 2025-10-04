@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Entity
@@ -12,7 +13,7 @@ public class Propiedad {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idPropiedad;
+    private Integer idPropiedad;
 
     @Column(name = "titulo", length = 200, nullable = false)
     private String titulo;
@@ -77,11 +78,11 @@ public class Propiedad {
     public Propiedad() {
     }
 
-    public int getIdPropiedad() {
+    public Integer getIdPropiedad() {
         return idPropiedad;
     }
 
-    public void setIdPropiedad(int idPropiedad) {
+    public void setIdPropiedad(Integer idPropiedad) {
         this.idPropiedad = idPropiedad;
     }
 

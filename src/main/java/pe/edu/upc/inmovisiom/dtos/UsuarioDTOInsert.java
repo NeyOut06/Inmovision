@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class UsuarioDTOInsert {
-    private int idUser;
+    private Integer idUser;
     private String nombre;
     private String apellido;
     private String correo;
@@ -18,12 +18,11 @@ public class UsuarioDTOInsert {
     private Boolean enabled;
 
 
-
-    public int getIdUser() {
+    public Integer getIdUser() {
         return idUser;
     }
 
-    public void setIdUser(int idUser) {
+    public void setIdUser(Integer idUser) {
         this.idUser = idUser;
     }
 
@@ -98,5 +97,7 @@ public class UsuarioDTOInsert {
     public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
     }
+
+
 
 }

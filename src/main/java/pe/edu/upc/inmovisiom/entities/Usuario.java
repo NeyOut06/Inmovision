@@ -12,7 +12,7 @@ public class Usuario implements Serializable
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idUser;
+    private Integer idUser;
 
     @Column(name = "nombre",length = 100, nullable = false)
     private String nombre;
@@ -43,29 +43,16 @@ public class Usuario implements Serializable
     @JoinColumn(name = "user_id")
     private List<Rol> roles;
 
-    public int getIdUsuario() {
-        return idUser;
-    }
 
     public Usuario() {
     }
 
-    public Usuario(int idUser, String nombre, String apellido, String correo, String password, String telefono, String fotourl, LocalDate fecha_registro) {
-        this.idUser = idUser;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.correo = correo;
-        this.password = password;
-        this.telefono = telefono;
-        this.fotourl = fotourl;
-        this.fecha_registro = fecha_registro;
-    }
 
-    public int getIdUser() {
+    public Integer getIdUser() {
         return idUser;
     }
 
-    public void setIdUser(int idUser) {
+    public void setIdUser(Integer idUser) {
         this.idUser = idUser;
     }
 

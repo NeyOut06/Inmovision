@@ -1,23 +1,25 @@
 package pe.edu.upc.inmovisiom.dtos;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import pe.edu.upc.inmovisiom.entities.Propiedad;
 import pe.edu.upc.inmovisiom.entities.Usuario;
 
 import java.time.LocalDate;
 
 public class CalificacionDTO {
-    private int idCalificacion;
+    private Integer idCalificacion;
     private int puntuacion;
     private String comentario;
     private LocalDate fecha;
+    @JsonIgnoreProperties({"roles", "username", "password", "apellido", "telefono fotourl", "fecha_registro", "correo", "telefono", "fotourl","enabled"})
     private Usuario usuario;
     private Propiedad propiedad;
 
-    public int getIdCalificacion() {
+    public Integer getIdCalificacion() {
         return idCalificacion;
     }
 
-    public void setIdCalificacion(int idCalificacion) {
+    public void setIdCalificacion(Integer idCalificacion) {
         this.idCalificacion = idCalificacion;
     }
 

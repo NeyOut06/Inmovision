@@ -8,7 +8,7 @@ public class ListaFavoritos {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idLista;
+    private Integer idLista;
 
     @Column(name = "nombre", length = 100, nullable = false)
     private String nombre;
@@ -18,11 +18,11 @@ public class ListaFavoritos {
 
     public ListaFavoritos() {}
 
-    public int getIdLista() {
+    public Integer getIdLista() {
         return idLista;
     }
 
-    public void setIdLista(int idLista) {
+    public void setIdLista(Integer idLista) {
         this.idLista = idLista;
     }
 

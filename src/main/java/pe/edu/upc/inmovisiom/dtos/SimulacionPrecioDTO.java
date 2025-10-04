@@ -6,7 +6,7 @@ import pe.edu.upc.inmovisiom.entities.Usuario;
 import java.time.LocalDate;
 
 public class SimulacionPrecioDTO {
-    private int idSimulacion;
+    private Integer idSimulacion;
     private double montoInicial;
     private int tasaIntereses;
     private int plazoMeses;
@@ -16,11 +16,11 @@ public class SimulacionPrecioDTO {
     private Usuario usuario;
     private Propiedad propiedad;
 
-    public int getIdSimulacion() {
+    public Integer getIdSimulacion() {
         return idSimulacion;
     }
 
-    public void setIdSimulacion(int idSimulacion) {
+    public void setIdSimulacion(Integer idSimulacion) {
         this.idSimulacion = idSimulacion;
     }
 

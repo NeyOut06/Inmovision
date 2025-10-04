@@ -1,24 +1,26 @@
 package pe.edu.upc.inmovisiom.dtos;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import pe.edu.upc.inmovisiom.entities.Contrato;
 import pe.edu.upc.inmovisiom.entities.Usuario;
 
 import java.time.LocalDate;
 
 public class PagoDTO {
-    private int idPago;
+    private Integer idPago;
     private LocalDate fechaPago;
     private double monto;
     private String metodoPago;
     private String estado;
     private Contrato contrato;
+    @JsonIgnoreProperties({"roles", "username", "password", "apellido", "telefono fotourl", "fecha_registro", "correo", "telefono", "fotourl","enabled"})
     private Usuario usuario;
 
-    public int getIdPago() {
+    public Integer getIdPago() {
         return idPago;
     }
 
-    public void setIdPago(int idPago) {
+    public void setIdPago(Integer idPago) {
         this.idPago = idPago;
     }
 

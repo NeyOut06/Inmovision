@@ -1,11 +1,15 @@
 package pe.edu.upc.inmovisiom.dtos;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import pe.edu.upc.inmovisiom.entities.Distrito;
+import pe.edu.upc.inmovisiom.entities.Usuario;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class PropiedadDTO {
 
-    private int idPropiedad;
+    private Integer idPropiedad;
     private String titulo;
     private String descripcion;
     private double precio;
@@ -22,12 +26,16 @@ public class PropiedadDTO {
     private BigDecimal longitud;
     private String urlVr;
     private String notas;
+    @JsonIgnoreProperties({"roles", "username", "password", "apellido", "telefono fotourl", "fecha_registro", "correo", "telefono", "fotourl","enabled"})
+    private Usuario usuario;
+    private Distrito distrito;
 
-    public int getIdPropiedad() {
+
+    public Integer getIdPropiedad() {
         return idPropiedad;
     }
 
-    public void setIdPropiedad(int idPropiedad) {
+    public void setIdPropiedad(Integer idPropiedad) {
         this.idPropiedad = idPropiedad;
     }
 
@@ -157,5 +165,21 @@ public class PropiedadDTO {
 
     public void setNotas(String notas) {
         this.notas = notas;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Distrito getDistrito() {
+        return distrito;
+    }
+
+    public void setDistrito(Distrito distrito) {
+        this.distrito = distrito;
     }
 }

@@ -1,7 +1,6 @@
 package pe.edu.upc.inmovisiom.entities;
 
 import jakarta.persistence.*;
-
 import java.time.LocalDate;
 
 @Entity
@@ -10,7 +9,7 @@ public class Favorito {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idFavorito;
+    private Integer idFavorito;
 
     @Column(name = "fecha_agregado", nullable = false)
     private LocalDate fechaAgregado;
@@ -29,11 +28,11 @@ public class Favorito {
 
     public Favorito() {}
 
-    public int getIdFavorito() {
+    public Integer getIdFavorito() {
         return idFavorito;
     }
 
-    public void setIdFavorito(int idFavorito) {
+    public void setIdFavorito(Integer idFavorito) {
         this.idFavorito = idFavorito;
     }
 

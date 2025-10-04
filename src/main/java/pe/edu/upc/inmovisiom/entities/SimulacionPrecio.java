@@ -10,7 +10,7 @@ public class SimulacionPrecio {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idSimulacion;
+    private Integer idSimulacion;
 
     @Column(name = "monto_inicial", nullable = false)
     private double montoInicial;
@@ -37,11 +37,11 @@ public class SimulacionPrecio {
 
     public SimulacionPrecio() {}
 
-    public int getIdSimulacion() {
+    public Integer getIdSimulacion() {
         return idSimulacion;
     }
 
-    public void setIdSimulacion(int idSimulacion) {
+    public void setIdSimulacion(Integer idSimulacion) {
         this.idSimulacion = idSimulacion;
     }
 

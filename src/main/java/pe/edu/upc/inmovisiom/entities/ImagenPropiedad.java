@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class ImagenPropiedad {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idImagen;
+    private Integer idImagen;
 
     @Column(name = "url_imagen", length = 500, nullable = false)
     private String urlImagen;
@@ -21,11 +21,11 @@ public class ImagenPropiedad {
 
     public ImagenPropiedad() {}
 
-    public int getIdImagen() {
+    public Integer getIdImagen() {
         return idImagen;
     }
 
-    public void setIdImagen(int idImagen) {
+    public void setIdImagen(Integer idImagen) {
         this.idImagen = idImagen;
     }
 

@@ -1,11 +1,9 @@
 package pe.edu.upc.inmovisiom.dtos;
-
 import pe.edu.upc.inmovisiom.entities.Propiedad;
-
 import java.time.LocalDate;
 
 public class ContratoDTO {
-    private int idContrato;
+    private Integer idContrato;
     private String tipo;
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
@@ -14,11 +12,11 @@ public class ContratoDTO {
     private String terminosYCondiciones;
     private Propiedad propiedad;
 
-    public int getIdContrato() {
+    public Integer getIdContrato() {
         return idContrato;
     }
 
-    public void setIdContrato(int idContrato) {
+    public void setIdContrato(Integer idContrato) {
         this.idContrato = idContrato;
     }
 

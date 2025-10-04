@@ -1,8 +1,10 @@
 package pe.edu.upc.inmovisiom.servicesimplements;
 
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.edu.upc.inmovisiom.entities.Rol;
+import pe.edu.upc.inmovisiom.entities.Usuario;
 import pe.edu.upc.inmovisiom.repositories.IRolRepository;
 import pe.edu.upc.inmovisiom.servicesinterfaces.IRolService;
 
@@ -24,8 +26,9 @@ public class RolServiceImplement implements IRolService {
     }
 
     @Override
-    public void delete(int rol) {
-        rS.deleteById(rol);
+    @Transactional
+    public void delete(int id) {
+        rS.deleteRolById(id);
     }
 
     @Override

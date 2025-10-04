@@ -1,7 +1,6 @@
 package pe.edu.upc.inmovisiom.entities;
 
 import jakarta.persistence.*;
-
 import java.time.LocalDate;
 
 @Entity
@@ -10,7 +9,7 @@ public class Visita {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idVisita;
+    private Integer idVisita;
 
     @Column(name = "fecha_hora", nullable = false)
     private LocalDate fechaHora;
@@ -26,17 +25,15 @@ public class Visita {
     @JoinColumn(name = "idPropiedad", nullable = false)
     private Propiedad propiedad;
 
-    @ManyToOne
-    @JoinColumn(name = "idUsuarioRegistro", nullable = false)
-    private Usuario usuarioRegistro;
+
 
     public Visita() {}
 
-    public int getIdVisita() {
+    public Integer getIdVisita() {
         return idVisita;
     }
 
-    public void setIdVisita(int idVisita) {
+    public void setIdVisita(Integer idVisita) {
         this.idVisita = idVisita;
     }
 
@@ -72,11 +69,5 @@ public class Visita {
         this.propiedad = propiedad;
     }
 
-    public Usuario getUsuarioRegistro() {
-        return usuarioRegistro;
-    }
 
-    public void setUsuarioRegistro(Usuario usuarioRegistro) {
-        this.usuarioRegistro = usuarioRegistro;
-    }
 }

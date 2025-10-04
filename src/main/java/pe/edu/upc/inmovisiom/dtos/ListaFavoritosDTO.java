@@ -1,15 +1,15 @@
 package pe.edu.upc.inmovisiom.dtos;
 
 public class ListaFavoritosDTO {
-    private int idLista;
+    private Integer idLista;
     private String nombre;
     private String descripcion;
 
-    public int getIdLista() {
+    public Integer getIdLista() {
         return idLista;
     }
 
-    public void setIdLista(int idLista) {
+    public void setIdLista(Integer idLista) {
         this.idLista = idLista;
     }
 
