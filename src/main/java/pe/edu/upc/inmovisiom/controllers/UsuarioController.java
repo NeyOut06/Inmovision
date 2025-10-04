@@ -65,13 +65,13 @@ public class UsuarioController {
         ModelMapper m = new ModelMapper();
         Usuario u = m.map(dto, Usuario.class);
 
-        Usuario existente = uS.listId(u.getIdUsuario());
+        Usuario existente = uS.listId(u.getIdUser());
         if (existente == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("No se puede modificar. No existe un registro con el ID: " + u.getIdUsuario());
+                    .body("No se puede modificar. No existe un registro con el ID: " + u.getIdUser());
         }
 
         uS.update(u);
-        return ResponseEntity.ok("Registro con ID " + u.getIdUsuario() + " modificado correctamente.");
+        return ResponseEntity.ok("Registro con ID " + u.getIdUser() + " modificado correctamente.");
     }
 }
