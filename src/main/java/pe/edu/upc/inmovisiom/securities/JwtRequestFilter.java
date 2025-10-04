@@ -1,5 +1,6 @@
 package pe.edu.upc.inmovisiom.securities;
 
+
 import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -26,32 +27,17 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
 
-    // Lista de rutas públicas que no requieren JWT
-    private static final List<String> PUBLIC_PATHS = Arrays.asList(
-            "/",
-            "/health",
-            "/api/status",
-            "/login",
-            "/register",
-            "/swagger-ui",
-            "/v3/api-docs"
-    );
+
+
+
+
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws ServletException, IOException {
-
-        // Verificar si la ruta es pública
-        String path = request.getServletPath();
-        if (isPublicPath(path)) {
-            chain.doFilter(request, response);
-            return;
-        }
-
         final String requestTokenHeader = request.getHeader("Authorization");
         String username = null;
         String jwtToken = null;
-
         // JWT Token is in the form "Bearer token". Remove Bearer word and get
         // only the Token
         if (requestTokenHeader != null && requestTokenHeader.startsWith("Bearer ")) {
@@ -63,10 +49,11 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             } catch (ExpiredJwtException e) {
                 System.out.println("Token JWT ha expirado");
             }
-        } else if (requestTokenHeader != null) {
+        } else {
             logger.warn("JWT Token no inicia con la palabra Bearer");
             System.out.println(requestTokenHeader);
         }
+
 
         // Once we get the token validate it.
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
@@ -90,7 +77,5 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         chain.doFilter(request, response);
     }
 
-    private boolean isPublicPath(String path) {
-        return PUBLIC_PATHS.stream().anyMatch(path::startsWith);
-    }
+
 }
