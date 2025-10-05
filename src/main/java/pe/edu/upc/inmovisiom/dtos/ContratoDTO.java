@@ -1,4 +1,5 @@
 package pe.edu.upc.inmovisiom.dtos;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import pe.edu.upc.inmovisiom.entities.Propiedad;
 import java.time.LocalDate;
 
@@ -10,6 +11,7 @@ public class ContratoDTO {
     private double monto;
     private String estado;
     private String terminosYCondiciones;
+    @JsonIgnoreProperties({"usuario", "fechaPublicacion", "habitaciones", "banos"})
     private Propiedad propiedad;
 
     public Integer getIdContrato() {

@@ -1,5 +1,6 @@
 package pe.edu.upc.inmovisiom.dtos;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import pe.edu.upc.inmovisiom.entities.Propiedad;
 import pe.edu.upc.inmovisiom.entities.Usuario;
 
@@ -9,7 +10,9 @@ public class VisitaDTO {
     private Integer idVisita;
     private LocalDate fechaHora;
     private String estado;
+    @JsonIgnoreProperties({"roles", "username", "password", "apellido", "telefono fotourl", "fecha_registro", "correo", "telefono", "fotourl","enabled"})
     private Usuario usuario;
+    @JsonIgnoreProperties({"usuario", "fechaPublicacion", "habitaciones", "banos"})
     private Propiedad propiedad;
 
     public Integer getIdVisita() {

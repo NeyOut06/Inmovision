@@ -1,7 +1,6 @@
 pe\edu\upc\inmovisiom\entities\Pago.class
 pe\edu\upc\inmovisiom\servicesimplements\CalificacionServiceImplement.class
 pe\edu\upc\inmovisiom\controllers\HealthController.class
-pe\edu\upc\inmovisiom\entities\Usuario.class
 pe\edu\upc\inmovisiom\dtos\SimulacionPrecioDTO.class
 pe\edu\upc\inmovisiom\servicesimplements\RolServiceImplement.class
 pe\edu\upc\inmovisiom\servicesinterfaces\IContratoService.class
@@ -15,7 +14,6 @@ pe\edu\upc\inmovisiom\controllers\ComparacionController.class
 pe\edu\upc\inmovisiom\controllers\ListaFavoritosController.class
 pe\edu\upc\inmovisiom\servicesimplements\VisitaServiceImplement.class
 pe\edu\upc\inmovisiom\servicesimplements\PagoServiceImplement.class
-pe\edu\upc\inmovisiom\servicesinterfaces\ICalificacionService.class
 pe\edu\upc\inmovisiom\servicesimplements\ListaFavoritosServiceImplement.class
 pe\edu\upc\inmovisiom\servicesinterfaces\IPropiedadService.class
 pe\edu\upc\inmovisiom\repositories\IFavoritoRepository.class
@@ -23,7 +21,6 @@ pe\edu\upc\inmovisiom\entities\Recomendacion.class
 pe\edu\upc\inmovisiom\servicesimplements\DistritoServiceImplement.class
 pe\edu\upc\inmovisiom\repositories\IMensajeRepository.class
 pe\edu\upc\inmovisiom\servicesinterfaces\IFavoritoService.class
-pe\edu\upc\inmovisiom\entities\Propiedad.class
 pe\edu\upc\inmovisiom\repositories\IPagoRepository.class
 pe\edu\upc\inmovisiom\entities\ListaFavoritos.class
 pe\edu\upc\inmovisiom\controllers\ImagenPropiedadController.class
@@ -32,7 +29,6 @@ pe\edu\upc\inmovisiom\repositories\IImagenPropiedadRepository.class
 pe\edu\upc\inmovisiom\repositories\IDistritoRepository.class
 pe\edu\upc\inmovisiom\dtos\JwtRequestDTO.class
 pe\edu\upc\inmovisiom\servicesinterfaces\IUsuarioService.class
-pe\edu\upc\inmovisiom\controllers\CalificacionController.class
 pe\edu\upc\inmovisiom\controllers\ContratoController.class
 pe\edu\upc\inmovisiom\dtos\VisitaDTO.class
 pe\edu\upc\inmovisiom\dtos\UsuarioDTOInsert.class
@@ -53,7 +49,6 @@ pe\edu\upc\inmovisiom\servicesinterfaces\IListaFavoritosService.class
 pe\edu\upc\inmovisiom\dtos\FavoritoDTO.class
 pe\edu\upc\inmovisiom\repositories\IUsuarioRepository.class
 pe\edu\upc\inmovisiom\controllers\PropiedadController.class
-pe\edu\upc\inmovisiom\entities\Rol.class
 pe\edu\upc\inmovisiom\servicesimplements\MensajeServiceImplement.class
 pe\edu\upc\inmovisiom\dtos\MensajeDTO.class
 pe\edu\upc\inmovisiom\controllers\VisitaController.class
@@ -62,7 +57,6 @@ pe\edu\upc\inmovisiom\servicesinterfaces\IRecomendacionService.class
 pe\edu\upc\inmovisiom\servicesinterfaces\IDistritoService.class
 pe\edu\upc\inmovisiom\servicesimplements\PropiedadServiceImplement.class
 pe\edu\upc\inmovisiom\controllers\DistritoController.class
-pe\edu\upc\inmovisiom\entities\Calificacion.class
 pe\edu\upc\inmovisiom\entities\Contrato.class
 pe\edu\upc\inmovisiom\repositories\ICalificacionRepository.class
 pe\edu\upc\inmovisiom\entities\Mensaje.class
@@ -77,13 +71,11 @@ pe\edu\upc\inmovisiom\dtos\PropiedadDTO.class
 pe\edu\upc\inmovisiom\repositories\IListaFavoritosRepository.class
 pe\edu\upc\inmovisiom\servicesinterfaces\ISimulacionPrecioService.class
 pe\edu\upc\inmovisiom\dtos\DistritoDTO.class
-pe\edu\upc\inmovisiom\entities\Distrito.class
 pe\edu\upc\inmovisiom\controllers\MensajeController.class
 pe\edu\upc\inmovisiom\controllers\RecomendacionController.class
 pe\edu\upc\inmovisiom\servicesimplements\ContratoServiceImplement.class
 pe\edu\upc\inmovisiom\dtos\ContratoDTO.class
 pe\edu\upc\inmovisiom\dtos\ImagenPropiedadDTO.class
-pe\edu\upc\inmovisiom\config\OpenApiConfig.class
 pe\edu\upc\inmovisiom\servicesimplements\ComparacionServiceImplement.class
 pe\edu\upc\inmovisiom\securities\WebSecurityConfig.class
 pe\edu\upc\inmovisiom\controllers\FavoritoController.class
@@ -92,11 +84,9 @@ pe\edu\upc\inmovisiom\controllers\PagoController.class
 pe\edu\upc\inmovisiom\repositories\IRolRepository.class
 pe\edu\upc\inmovisiom\entities\SimulacionPrecio.class
 pe\edu\upc\inmovisiom\servicesinterfaces\IComparacionService.class
-pe\edu\upc\inmovisiom\InmovisiomApplication.class
 pe\edu\upc\inmovisiom\dtos\PagoDTO.class
 pe\edu\upc\inmovisiom\servicesimplements\RecomendacionServiceImplement.class
 pe\edu\upc\inmovisiom\entities\ImagenPropiedad.class
 pe\edu\upc\inmovisiom\repositories\ISimulacionPrecioRepository.class
-pe\edu\upc\inmovisiom\dtos\CalificacionDTO.class
 pe\edu\upc\inmovisiom\servicesimplements\FavoritoServiceImplement.class
 pe\edu\upc\inmovisiom\entities\Favorito.class
