@@ -11,6 +11,11 @@ import pe.edu.upc.inmovisiom.entities.Usuario;
 @Repository
 public interface IUsuarioRepository extends JpaRepository<Usuario,Integer> {
 
+    @Modifying
+    @Query("delete from Rol r where r.idRol = :id")
+    void deleteuserid(@Param("id") Integer id);
+
+
     public Usuario findOneByUsername(String username);
 
     //BUSCAR POR correo

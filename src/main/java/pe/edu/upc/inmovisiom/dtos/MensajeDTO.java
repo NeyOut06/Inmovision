@@ -13,6 +13,7 @@ public class MensajeDTO {
     private LocalDate enviadoEn;
     @JsonIgnoreProperties({"roles", "username", "password", "apellido", "telefono fotourl", "fecha_registro", "correo", "telefono", "fotourl","enabled"})
     private Usuario usuario;
+    @JsonIgnoreProperties({"usuario", "fechaPublicacion", "habitaciones", "banos"})
     private Propiedad propiedad;
 
     public Integer getIdMensaje() {

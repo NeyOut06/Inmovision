@@ -1,11 +1,13 @@
 package pe.edu.upc.inmovisiom.dtos;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import pe.edu.upc.inmovisiom.entities.Propiedad;
 
 public class ImagenPropiedadDTO {
     private Integer idImagen;
     private String urlImagen;
     private String descripcion;
+    @JsonIgnoreProperties({"usuario", "fechaPublicacion", "habitaciones", "banos"})
     private Propiedad propiedad;
 
     public Integer getIdImagen() {

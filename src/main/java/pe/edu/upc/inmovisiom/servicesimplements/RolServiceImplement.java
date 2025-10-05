@@ -4,7 +4,6 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.edu.upc.inmovisiom.entities.Rol;
-import pe.edu.upc.inmovisiom.entities.Usuario;
 import pe.edu.upc.inmovisiom.repositories.IRolRepository;
 import pe.edu.upc.inmovisiom.servicesinterfaces.IRolService;
 
