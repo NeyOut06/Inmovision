@@ -1,6 +1,7 @@
 package pe.edu.upc.inmovisiom.servicesimplements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.upc.inmovisiom.dtos.ReportePropiedadesPorDistritoDTO;
 import pe.edu.upc.inmovisiom.entities.Propiedad;
 import pe.edu.upc.inmovisiom.repositories.IPropiedadRepository;
 import pe.edu.upc.inmovisiom.servicesinterfaces.IPropiedadService;
@@ -44,6 +45,11 @@ public class PropiedadServiceImplement implements IPropiedadService {
     @Override
     public Propiedad listId(Integer id) {
         return pS.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<ReportePropiedadesPorDistritoDTO> reportePropiedadesPorDistrito() {
+        return pS.reportePropiedadesPorDistrito();
     }
 }
 

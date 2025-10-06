@@ -2,8 +2,11 @@ package pe.edu.upc.inmovisiom.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.inmovisiom.dtos.FavoritoDTO;
+import pe.edu.upc.inmovisiom.dtos.ReporteFavoritosPorPropiedadDTO;
 import pe.edu.upc.inmovisiom.entities.Favorito;
 import pe.edu.upc.inmovisiom.servicesinterfaces.IFavoritoService;
 
@@ -49,5 +52,11 @@ public class FavoritoController {
     @DeleteMapping("/{id}")
     public void eliminar(@PathVariable("id") Integer id) {
         fS.delete(id);
+    }
+
+    @GetMapping("/ReporteFavoritosPorPropiedad")
+    public ResponseEntity<List<ReporteFavoritosPorPropiedadDTO>> reporteFavoritosPorPropiedad() {
+        List<ReporteFavoritosPorPropiedadDTO> lista = fS.reporteFavoritosPorPropiedad();
+        return new ResponseEntity<>(lista, HttpStatus.OK);
     }
 }

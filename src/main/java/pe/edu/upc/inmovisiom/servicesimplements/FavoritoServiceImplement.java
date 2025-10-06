@@ -2,6 +2,7 @@ package pe.edu.upc.inmovisiom.servicesimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.upc.inmovisiom.dtos.ReporteFavoritosPorPropiedadDTO;
 import pe.edu.upc.inmovisiom.entities.Favorito;
 import pe.edu.upc.inmovisiom.repositories.IFavoritoRepository;
 import pe.edu.upc.inmovisiom.servicesinterfaces.IFavoritoService;
@@ -37,5 +38,10 @@ public class FavoritoServiceImplement implements IFavoritoService {
     @Override
     public void update(Favorito favorito) {
         fR.save(favorito);
+    }
+
+    @Override
+    public List<ReporteFavoritosPorPropiedadDTO> reporteFavoritosPorPropiedad() {
+        return fR.reporteFavoritosPorPropiedad();
     }
 }

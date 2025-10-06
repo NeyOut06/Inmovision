@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.inmovisiom.dtos.PropiedadDTO;
+import pe.edu.upc.inmovisiom.dtos.ReportePropiedadesPorDistritoDTO;
 import pe.edu.upc.inmovisiom.entities.Propiedad;
 import pe.edu.upc.inmovisiom.servicesinterfaces.IPropiedadService;
 
@@ -71,5 +72,11 @@ public class PropiedadController {
 
         pS.update(p);
         return ResponseEntity.ok("Registro con ID " + p.getIdPropiedad() + " modificado correctamente.");
+    }
+
+    @GetMapping("/ReportePropiedadesPorDistrito")
+    public ResponseEntity<List<ReportePropiedadesPorDistritoDTO>> reportePropiedadesPorDistrito() {
+        List<ReportePropiedadesPorDistritoDTO> lista = pS.reportePropiedadesPorDistrito();
+        return new ResponseEntity<>(lista, HttpStatus.OK);
     }
 }

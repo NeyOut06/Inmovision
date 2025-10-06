@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.inmovisiom.dtos.CalificacionDTO;
+import pe.edu.upc.inmovisiom.dtos.ReporteCalificacionPromedioDTO;
 import pe.edu.upc.inmovisiom.entities.Calificacion;
 import pe.edu.upc.inmovisiom.servicesinterfaces.ICalificacionService;
 
@@ -71,5 +72,11 @@ public class CalificacionController {
 
         cS.update(c);
         return ResponseEntity.ok("Calificación con ID " + c.getIdCalificacion() + " modificada correctamente.");
+    }
+
+    @GetMapping("/ReporteCalificacionPromedio")
+    public ResponseEntity<List<ReporteCalificacionPromedioDTO>> reportePromedioCalificacion() {
+        List<ReporteCalificacionPromedioDTO> lista = cS.reportePromedioCalificacion();
+        return new ResponseEntity<>(lista, HttpStatus.OK);
     }
 }

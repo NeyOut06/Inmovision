@@ -3,9 +3,12 @@ package pe.edu.upc.inmovisiom.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.inmovisiom.dtos.PagoDTO;
 import pe.edu.upc.inmovisiom.dtos.PagoXUsuarioDTO;
+import pe.edu.upc.inmovisiom.dtos.ReportePagosPorMetodoDTO;
 import pe.edu.upc.inmovisiom.entities.Pago;
 import pe.edu.upc.inmovisiom.servicesinterfaces.IPagoService;
 
@@ -61,5 +64,11 @@ public class PagoController {
             @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fin) {
 
         return pS.pagosPorUsuario(inicio, fin);
+    }
+
+    @GetMapping("/ReportePagosPorMetodo")
+    public ResponseEntity<List<ReportePagosPorMetodoDTO>> reportePagosPorMetodo() {
+        List<ReportePagosPorMetodoDTO> lista = pS.reportePagosPorMetodo();
+        return new ResponseEntity<>(lista, HttpStatus.OK);
     }
 }
