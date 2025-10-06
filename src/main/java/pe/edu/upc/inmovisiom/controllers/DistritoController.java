@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.inmovisiom.dtos.DistritoDTO;
 import pe.edu.upc.inmovisiom.dtos.UsuarioDTOInsert;
@@ -20,6 +21,7 @@ public class DistritoController {
     @Autowired
     private IDistritoService dS;
     @GetMapping
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     public List<DistritoDTO> listar(){
         return dS.list().stream().map(y->{
             ModelMapper m = new ModelMapper();
@@ -27,6 +29,7 @@ public class DistritoController {
         }).collect(Collectors.toList());
     }
     @PostMapping
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     public void insertar(@RequestBody DistritoDTO dto){
         ModelMapper m = new ModelMapper();
         Distrito d=m.map(dto,Distrito.class);
@@ -34,6 +37,7 @@ public class DistritoController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     public ResponseEntity<?> listarId(@PathVariable("id") Integer id) {
         Distrito u = dS.listId(id);
         if (u == null) {
@@ -48,6 +52,7 @@ public class DistritoController {
 
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     public ResponseEntity<String> eliminar(@PathVariable("id") Integer id) {
         Distrito u = dS.listId(id);
         if (u == null) {
@@ -59,6 +64,7 @@ public class DistritoController {
     }
 
     @PutMapping
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     public ResponseEntity<String> modificar(@RequestBody UsuarioDTOInsert dto) {
         ModelMapper m = new ModelMapper();
         Distrito u = m.map(dto, Distrito.class);

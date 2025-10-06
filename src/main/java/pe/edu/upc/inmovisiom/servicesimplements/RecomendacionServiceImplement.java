@@ -2,6 +2,7 @@ package pe.edu.upc.inmovisiom.servicesimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.upc.inmovisiom.dtos.ReporteRecomendacionesPorPropiedadDTO;
 import pe.edu.upc.inmovisiom.entities.Recomendacion;
 import pe.edu.upc.inmovisiom.repositories.IRecomendacionRepository;
 import pe.edu.upc.inmovisiom.servicesinterfaces.IRecomendacionService;
@@ -37,5 +38,10 @@ public class RecomendacionServiceImplement implements IRecomendacionService {
     @Override
     public void update(Recomendacion recomendacion) {
         rR.save(recomendacion);
+    }
+
+    @Override
+    public List<ReporteRecomendacionesPorPropiedadDTO> reporteRecomendacionesPorPropiedad() {
+        return rR.reporteRecomendacionesPorPropiedad();
     }
 }

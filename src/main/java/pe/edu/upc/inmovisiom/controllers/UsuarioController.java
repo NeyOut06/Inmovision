@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.inmovisiom.dtos.UsuarioDTOInsert;
 import pe.edu.upc.inmovisiom.dtos.UsuarioDTOList;
@@ -20,6 +21,7 @@ public class UsuarioController {
     private IUsuarioService uS;
 
     @GetMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<UsuarioDTOList> list() {
         return uS.list().stream().map(y->{
             ModelMapper m=new ModelMapper();
@@ -36,6 +38,7 @@ public class UsuarioController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<?> listarId(@PathVariable("id") Integer id) {
         Usuario u = uS.listId(id);
         if (u == null) {
@@ -50,6 +53,7 @@ public class UsuarioController {
 
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<String> eliminar(@PathVariable("id") Integer id) {
         Usuario u = uS.listId(id);
         if (u == null) {
@@ -61,6 +65,7 @@ public class UsuarioController {
     }
 
     @PutMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<String> modificar(@RequestBody UsuarioDTOInsert dto) {
         ModelMapper m = new ModelMapper();
         Usuario u = m.map(dto, Usuario.class);

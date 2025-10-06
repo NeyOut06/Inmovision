@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.inmovisiom.dtos.FavoritoDTO;
 import pe.edu.upc.inmovisiom.dtos.ReporteFavoritosPorPropiedadDTO;
@@ -21,6 +22,7 @@ public class FavoritoController {
     private IFavoritoService fS;
 
     @PostMapping
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'COMPRADOR')")
     public void registrar(@RequestBody FavoritoDTO dto) {
         ModelMapper m = new ModelMapper();
         Favorito favorito = m.map(dto, Favorito.class);

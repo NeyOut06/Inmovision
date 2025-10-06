@@ -2,6 +2,7 @@ package pe.edu.upc.inmovisiom.servicesimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.upc.inmovisiom.dtos.ReporteVisitasPorPropiedadDTO;
 import pe.edu.upc.inmovisiom.entities.Visita;
 import pe.edu.upc.inmovisiom.repositories.IVisitaRepository;
 import pe.edu.upc.inmovisiom.servicesinterfaces.IVisitaService;
@@ -37,5 +38,10 @@ public class VisitaServiceImplement implements IVisitaService {
     @Override
     public void update(Visita visita) {
         vR.save(visita);
+    }
+
+    @Override
+    public List<ReporteVisitasPorPropiedadDTO> reporteVisitasPorPropiedad() {
+        return vR.reporteVisitasPorPropiedad();
     }
 }

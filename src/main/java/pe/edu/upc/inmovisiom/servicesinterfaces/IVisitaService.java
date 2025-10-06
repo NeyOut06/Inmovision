@@ -1,5 +1,6 @@
 package pe.edu.upc.inmovisiom.servicesinterfaces;
 
+import pe.edu.upc.inmovisiom.dtos.ReporteVisitasPorPropiedadDTO;
 import pe.edu.upc.inmovisiom.entities.Visita;
 
 import java.util.List;
@@ -10,4 +11,6 @@ public interface IVisitaService {
     Visita listId(int id);
     void delete(int id);
     void update(Visita visita);
+    List<ReporteVisitasPorPropiedadDTO> reporteVisitasPorPropiedad();
+
 }

@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.inmovisiom.dtos.ComparacionDTO;
 import pe.edu.upc.inmovisiom.entities.Comparacion;
@@ -20,6 +21,7 @@ public class ComparacionController {
     private IComparacionService cS;
 
     @GetMapping
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'COMPRADOR')")
     public List<ComparacionDTO> listar() {
         return cS.list().stream().map(y -> {
             ModelMapper m = new ModelMapper();
@@ -28,6 +30,7 @@ public class ComparacionController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'COMPRADOR')")
     public void insertar(@RequestBody ComparacionDTO dto) {
         ModelMapper m = new ModelMapper();
         Comparacion c = m.map(dto, Comparacion.class);
@@ -35,6 +38,7 @@ public class ComparacionController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'COMPRADOR')")
     public ResponseEntity<?> listarId(@PathVariable("id") Integer id) {
         Comparacion c = cS.listId(id);
         if (c == null) {
@@ -47,6 +51,7 @@ public class ComparacionController {
     }
 
     @PutMapping
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'COMPRADOR')")
     public ResponseEntity<String> modificar(@RequestBody ComparacionDTO dto) {
         ModelMapper m = new ModelMapper();
         Comparacion c = m.map(dto, Comparacion.class);
@@ -62,6 +67,7 @@ public class ComparacionController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'COMPRADOR')")
     public ResponseEntity<String> eliminar(@PathVariable("id") Integer id) {
         Comparacion c = cS.listId(id);
         if (c == null) {

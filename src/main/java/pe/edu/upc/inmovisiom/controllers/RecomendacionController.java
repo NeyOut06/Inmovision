@@ -2,8 +2,11 @@ package pe.edu.upc.inmovisiom.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.inmovisiom.dtos.RecomendacionDTO;
+import pe.edu.upc.inmovisiom.dtos.ReporteRecomendacionesPorPropiedadDTO;
 import pe.edu.upc.inmovisiom.entities.Recomendacion;
 import pe.edu.upc.inmovisiom.servicesinterfaces.IRecomendacionService;
 
@@ -48,5 +51,11 @@ public class RecomendacionController {
     @DeleteMapping("/{id}")
     public void eliminar(@PathVariable("id") Integer id) {
         rS.delete(id);
+    }
+
+    @GetMapping("/reporte/por-propiedad")
+    public ResponseEntity<List<ReporteRecomendacionesPorPropiedadDTO>> reporteRecomendacionesPorPropiedad() {
+        List<ReporteRecomendacionesPorPropiedadDTO> lista = rS.reporteRecomendacionesPorPropiedad();
+        return new ResponseEntity<>(lista, HttpStatus.OK);
     }
 }

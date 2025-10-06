@@ -3,6 +3,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.inmovisiom.dtos.ImagenPropiedadDTO;
 import pe.edu.upc.inmovisiom.entities.ImagenPropiedad;
@@ -19,6 +20,7 @@ public class ImagenPropiedadController {
     private IImagenPropiedadService iS;
 
     @GetMapping
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'ARRENDADOR')")
     public List<ImagenPropiedadDTO> listar() {
         return iS.list().stream().map(y -> {
             ModelMapper m = new ModelMapper();
@@ -27,6 +29,7 @@ public class ImagenPropiedadController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'ARRENDADOR')")
     public void insertar(@RequestBody ImagenPropiedadDTO dto) {
         ModelMapper m = new ModelMapper();
         ImagenPropiedad i = m.map(dto, ImagenPropiedad.class);
@@ -34,6 +37,7 @@ public class ImagenPropiedadController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'ARRENDADOR')")
     public ResponseEntity<?> listarId(@PathVariable("id") Integer id) {
         ImagenPropiedad i = iS.listId(id);
         if (i == null) {
@@ -47,6 +51,7 @@ public class ImagenPropiedadController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'ARRENDADOR')")
     public ResponseEntity<String> eliminar(@PathVariable("id") Integer id) {
         ImagenPropiedad i = iS.listId(id);
         if (i == null) {
@@ -58,6 +63,7 @@ public class ImagenPropiedadController {
     }
 
     @PutMapping
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'ARRENDADOR')")
     public ResponseEntity<String> modificar(@RequestBody ImagenPropiedadDTO dto) {
         ModelMapper m = new ModelMapper();
         ImagenPropiedad i = m.map(dto, ImagenPropiedad.class);
