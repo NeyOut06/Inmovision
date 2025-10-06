@@ -2,6 +2,7 @@ package pe.edu.upc.inmovisiom.servicesimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.upc.inmovisiom.dtos.ReporteCalificacionPromedioDTO;
 import pe.edu.upc.inmovisiom.entities.Calificacion;
 import pe.edu.upc.inmovisiom.repositories.ICalificacionRepository;
 import pe.edu.upc.inmovisiom.servicesinterfaces.ICalificacionService;
@@ -37,5 +38,10 @@ public class CalificacionServiceImplement implements ICalificacionService {
     @Override
     public void update(Calificacion calificacion) {
         cR.save(calificacion);
+    }
+
+    @Override
+    public List<ReporteCalificacionPromedioDTO> reportePromedioCalificacion() {
+        return cR.reporteCalificacionPromedioPorPropiedad();
     }
 }

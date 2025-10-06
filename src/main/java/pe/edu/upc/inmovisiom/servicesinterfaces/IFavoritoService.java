@@ -1,5 +1,6 @@
 package pe.edu.upc.inmovisiom.servicesinterfaces;
 
+import pe.edu.upc.inmovisiom.dtos.ReporteFavoritosPorPropiedadDTO;
 import pe.edu.upc.inmovisiom.entities.Favorito;
 import java.util.List;
 
@@ -9,4 +10,6 @@ public interface IFavoritoService {
     public Favorito listId(int id);
     public void delete(int id);
     public void update(Favorito favorito);
+    List<ReporteFavoritosPorPropiedadDTO> reporteFavoritosPorPropiedad();
+
 }

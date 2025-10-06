@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import pe.edu.upc.inmovisiom.dtos.PagoXUsuarioDTO;
+import pe.edu.upc.inmovisiom.dtos.ReportePagosPorMetodoDTO;
 import pe.edu.upc.inmovisiom.entities.Pago;
 
 import java.time.LocalDate;
@@ -31,4 +32,16 @@ ORDER BY COUNT(p.idPago) DESC
             @Param("inicio") LocalDate inicio,
             @Param("fin")    LocalDate fin
     );
+
+    @Query("""
+SELECT new pe.edu.upc.inmovisiom.dtos.ReportePagosPorMetodoDTO(
+    p.metodoPago,
+    COUNT(p.idPago),
+    COALESCE(SUM(p.monto), 0.0)
+)
+FROM Pago p
+GROUP BY p.metodoPago
+ORDER BY COALESCE(SUM(p.monto), 0.0) DESC
+""")
+    List<ReportePagosPorMetodoDTO> reportePagosPorMetodo();
 }

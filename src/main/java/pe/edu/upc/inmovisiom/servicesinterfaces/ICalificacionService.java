@@ -1,5 +1,6 @@
 package pe.edu.upc.inmovisiom.servicesinterfaces;
 
+import pe.edu.upc.inmovisiom.dtos.ReporteCalificacionPromedioDTO;
 import pe.edu.upc.inmovisiom.entities.Calificacion;
 
 import java.util.List;
@@ -10,4 +11,6 @@ public interface ICalificacionService {
     Calificacion listId(int id);
     void delete(int id);
     void update(Calificacion calificacion);
+    List<ReporteCalificacionPromedioDTO> reportePromedioCalificacion();
+
 }
