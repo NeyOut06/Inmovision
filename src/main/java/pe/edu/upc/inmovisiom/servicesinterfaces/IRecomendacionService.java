@@ -1,5 +1,6 @@
 package pe.edu.upc.inmovisiom.servicesinterfaces;
 
+import pe.edu.upc.inmovisiom.dtos.ReporteRecomendacionesPorPropiedadDTO;
 import pe.edu.upc.inmovisiom.entities.Recomendacion;
 
 import java.util.List;
@@ -10,4 +11,6 @@ public interface IRecomendacionService {
     Recomendacion listId(int id);
     void delete(int id);
     void update(Recomendacion recomendacion);
+    List<ReporteRecomendacionesPorPropiedadDTO> reporteRecomendacionesPorPropiedad();
+
 }

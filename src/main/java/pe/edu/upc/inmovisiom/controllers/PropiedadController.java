@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.inmovisiom.dtos.PropiedadDTO;
 import pe.edu.upc.inmovisiom.dtos.ReportePropiedadesPorDistritoDTO;
@@ -21,6 +22,7 @@ public class PropiedadController {
     private IPropiedadService pS;
 
     @GetMapping
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'ARRENDADOR')")
     public List<PropiedadDTO> listar() {
         return pS.list().stream().map(y -> {
             ModelMapper m = new ModelMapper();
@@ -29,6 +31,7 @@ public class PropiedadController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAuthority('ARRENDADOR')")
     public void insertar(@RequestBody PropiedadDTO dto) {
         ModelMapper m = new ModelMapper();
         Propiedad p = m.map(dto, Propiedad.class);
@@ -36,6 +39,7 @@ public class PropiedadController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'ARRENDADOR')")
     public ResponseEntity<?> listarId(@PathVariable("id") Integer id) {
         Propiedad p = pS.listId(id);
         if (p == null) {
@@ -49,6 +53,7 @@ public class PropiedadController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'ARRENDADOR')")
     public ResponseEntity<String> eliminar(@PathVariable("id") Integer id) {
         Propiedad p = pS.listId(id);
         if (p == null) {
@@ -60,6 +65,7 @@ public class PropiedadController {
     }
 
     @PutMapping
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'ARRENDADOR')")
     public ResponseEntity<String> modificar(@RequestBody PropiedadDTO dto) {
         ModelMapper m = new ModelMapper();
         Propiedad p = m.map(dto, Propiedad.class);
@@ -75,6 +81,7 @@ public class PropiedadController {
     }
 
     @GetMapping("/ReportePropiedadesPorDistrito")
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     public ResponseEntity<List<ReportePropiedadesPorDistritoDTO>> reportePropiedadesPorDistrito() {
         List<ReportePropiedadesPorDistritoDTO> lista = pS.reportePropiedadesPorDistrito();
         return new ResponseEntity<>(lista, HttpStatus.OK);

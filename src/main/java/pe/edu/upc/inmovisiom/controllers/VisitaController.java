@@ -2,7 +2,10 @@ package pe.edu.upc.inmovisiom.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.inmovisiom.dtos.ReporteVisitasPorPropiedadDTO;
 import pe.edu.upc.inmovisiom.dtos.VisitaDTO;
 import pe.edu.upc.inmovisiom.entities.Visita;
 import pe.edu.upc.inmovisiom.servicesinterfaces.IVisitaService;
@@ -48,5 +51,11 @@ public class VisitaController {
     @DeleteMapping("/{id}")
     public void eliminar(@PathVariable("id") Integer id) {
         vS.delete(id);
+    }
+
+    @GetMapping("/reportepor-propiedad")
+    public ResponseEntity<List<ReporteVisitasPorPropiedadDTO>> reporteVisitasPorPropiedad() {
+        List<ReporteVisitasPorPropiedadDTO> lista = vS.reporteVisitasPorPropiedad();
+        return new ResponseEntity<>(lista, HttpStatus.OK);
     }
 }
