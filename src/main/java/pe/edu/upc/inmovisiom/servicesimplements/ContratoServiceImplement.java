@@ -38,4 +38,14 @@ public class ContratoServiceImplement implements IContratoService {
     public void update(Contrato contrato) {
         cR.save(contrato);
     }
+
+    @Override
+    public List<String[]> distritoTop() {
+        return cR.distritoTop();
+    }
+
+    @Override
+    public List<String[]> montoPromedioContrato() {
+        return cR.montoPromedioContrato();
+    }
 }

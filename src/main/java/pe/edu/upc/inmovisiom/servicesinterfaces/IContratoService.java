@@ -10,4 +10,6 @@ public interface IContratoService {
     Contrato listId(int id);
     void delete(int id);
     void update(Contrato contrato);
+    public List<String[]> distritoTop();
+    public List<String[]> montoPromedioContrato();
 }
