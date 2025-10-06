@@ -2,13 +2,16 @@ package pe.edu.upc.inmovisiom.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.inmovisiom.dtos.MensajeDTO;
+import pe.edu.upc.inmovisiom.dtos.MensajeXUsuarioDTO;
 import pe.edu.upc.inmovisiom.entities.Mensaje;
 import pe.edu.upc.inmovisiom.servicesinterfaces.IMensajeService;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -71,5 +74,15 @@ public class MensajeController {
 
         mS.update(mensaje);
         return ResponseEntity.ok("Registro con ID " + mensaje.getIdMensaje() + " modificado correctamente.");
+    }
+
+    @GetMapping("/por-usuario")
+    public List<MensajeXUsuarioDTO> mensajesPorUsuario(
+            @RequestParam(required = false)
+            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate inicio,
+            @RequestParam(required = false)
+            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fin) {
+
+        return mS.mensajesPorUsuario(inicio, fin);
     }
 }

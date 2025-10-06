@@ -2,10 +2,13 @@ package pe.edu.upc.inmovisiom.servicesimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.upc.inmovisiom.dtos.PagoXUsuarioDTO;
 import pe.edu.upc.inmovisiom.entities.Pago;
 import pe.edu.upc.inmovisiom.repositories.IPagoRepository;
 import pe.edu.upc.inmovisiom.servicesinterfaces.IPagoService;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -37,5 +40,11 @@ public class PagoServiceImplement implements IPagoService {
     @Override
     public void update(Pago pago) {
         pR.save(pago);
+    }
+
+    @Override
+    public List<PagoXUsuarioDTO> pagosPorUsuario(LocalDate inicio, LocalDate fin) {
+        return pR.cantidadPagosxUsuario(inicio, fin);
+
     }
 }

@@ -1,7 +1,9 @@
 package pe.edu.upc.inmovisiom.servicesinterfaces;
 
+import pe.edu.upc.inmovisiom.dtos.MensajeXUsuarioDTO;
 import pe.edu.upc.inmovisiom.entities.Mensaje;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface IMensajeService {
@@ -11,4 +13,5 @@ public interface IMensajeService {
     void delete(int id);
     void update(Mensaje mensaje);
     Mensaje listId(Integer id);
+    List<MensajeXUsuarioDTO> mensajesPorUsuario(LocalDate inicio, LocalDate fin);
 }
