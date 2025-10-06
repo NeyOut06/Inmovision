@@ -6,9 +6,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.inmovisiom.dtos.ContratoDTO;
+import pe.edu.upc.inmovisiom.dtos.PromedioMontoPorTipoDTO;
+import pe.edu.upc.inmovisiom.dtos.TopDistritoContratosDTO;
 import pe.edu.upc.inmovisiom.entities.Contrato;
 import pe.edu.upc.inmovisiom.servicesinterfaces.IContratoService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -72,4 +75,31 @@ public class ContratoController {
         cS.update(c);
         return ResponseEntity.ok("Registro con ID " + c.getIdContrato() + " modificado correctamente.");
     }
+
+    @GetMapping("/top_distritos")
+    public List<TopDistritoContratosDTO> obtenerDistritos(){
+        List<TopDistritoContratosDTO> dtoList = new ArrayList<>();
+        List<String[]> filaList = cS.distritoTop();
+        for(String[] columna:filaList){
+            TopDistritoContratosDTO dto = new TopDistritoContratosDTO();
+            dto.setDistrito(columna[0]);
+            dto.setNumeroDeContratos(Integer.parseInt(columna[1]));
+            dtoList.add(dto);
+        }
+        return dtoList;
+    }
+
+    @GetMapping("/monto_promedio")
+    public List<PromedioMontoPorTipoDTO> obtenerPromedio(){
+        List<PromedioMontoPorTipoDTO> dtoList = new ArrayList<>();
+        List<String[]> filaList = cS.distritoTop();
+        for(String[] columna:filaList){
+            PromedioMontoPorTipoDTO dto = new PromedioMontoPorTipoDTO();
+            dto.setTipo(columna[0]);
+            dto.setPromedioMonto(Double.parseDouble(columna[1]));
+            dtoList.add(dto);
+        }
+        return dtoList;
+    }
+
 }
