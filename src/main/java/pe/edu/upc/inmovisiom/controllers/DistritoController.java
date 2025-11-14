@@ -65,7 +65,7 @@ public class DistritoController {
 
     @PutMapping
     @PreAuthorize("hasAnyAuthority('ADMIN')")
-    public ResponseEntity<String> modificar(@RequestBody UsuarioDTOInsert dto) {
+    public ResponseEntity<String> modificar(@RequestBody DistritoDTO dto) {
         ModelMapper m = new ModelMapper();
         Distrito u = m.map(dto, Distrito.class);
 

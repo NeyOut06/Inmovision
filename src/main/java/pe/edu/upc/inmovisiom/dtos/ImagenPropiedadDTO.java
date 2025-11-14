@@ -7,8 +7,8 @@ public class ImagenPropiedadDTO {
     private Integer idImagen;
     private String urlImagen;
     private String descripcion;
-    @JsonIgnoreProperties({"usuario", "fechaPublicacion", "habitaciones", "banos"})
-    private Propiedad propiedad;
+    private Integer idPropiedad;
+
 
     public Integer getIdImagen() {
         return idImagen;
@@ -34,11 +34,11 @@ public class ImagenPropiedadDTO {
         this.descripcion = descripcion;
     }
 
-    public Propiedad getPropiedad() {
-        return propiedad;
+    public Integer getIdPropiedad() {
+        return idPropiedad;
     }
 
-    public void setPropiedad(Propiedad propiedad) {
-        this.propiedad = propiedad;
+    public void setIdPropiedad(Integer idPropiedad) {
+        this.idPropiedad = idPropiedad;
     }
 }

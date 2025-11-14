@@ -23,8 +23,7 @@ public class Distrito {
     public Distrito(){
     }
 
-    public Distrito(int idDistrito, String nombreDistrito, String provinciaDistrito, String departamentoDistrito, String descripcionDistrito)
-    {
+    public Distrito(Integer idDistrito, String nombreDistrito, String provinciaDistrito, String departamentoDistrito) {
         this.idDistrito = idDistrito;
         this.nombreDistrito = nombreDistrito;
         this.provinciaDistrito = provinciaDistrito;

@@ -1,5 +1,6 @@
 package pe.edu.upc.inmovisiom.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 @Entity
@@ -16,7 +17,7 @@ public class ImagenPropiedad {
     private String descripcion;
 
     @ManyToOne
-    @JoinColumn(name = "idPropiedad", nullable = false)
+    @JoinColumn(name = "id_propiedad", nullable = false)
     private Propiedad propiedad;
 
     public ImagenPropiedad() {}

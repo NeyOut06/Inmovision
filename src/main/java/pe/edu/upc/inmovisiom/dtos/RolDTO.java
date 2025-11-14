@@ -6,7 +6,7 @@ import pe.edu.upc.inmovisiom.entities.Usuario;
 public class RolDTO {
     private Integer idRol;
     private String nombre;
-    @JsonIgnoreProperties({"roles", "username", "password", "apellido", "telefono fotourl", "fecha_registro", "correo", "telefono", "fotourl","enabled"})
+    @JsonIgnoreProperties({"roles", "username", "password", "telefono fotourl", "fecha_registro", "correo", "telefono", "fotourl","enabled"})
     private Usuario usuario;
 
 

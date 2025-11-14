@@ -2,6 +2,7 @@ package pe.edu.upc.inmovisiom.servicesimplements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.edu.upc.inmovisiom.dtos.ReportePropiedadesPorDistritoDTO;
+import pe.edu.upc.inmovisiom.entities.ImagenPropiedad;
 import pe.edu.upc.inmovisiom.entities.Propiedad;
 import pe.edu.upc.inmovisiom.repositories.IPropiedadRepository;
 import pe.edu.upc.inmovisiom.servicesinterfaces.IPropiedadService;
@@ -20,9 +21,14 @@ public class PropiedadServiceImplement implements IPropiedadService {
     }
 
     @Override
-    public void insert(Propiedad propiedad) {
-        pS.save(propiedad);
+    public void insert(Propiedad p) {
 
+        if (p.getImagenes() != null) {
+            for (ImagenPropiedad img : p.getImagenes()) {
+                img.setPropiedad(p);
+            }
+        }
+        pS.save(p);
     }
 
     @Override

@@ -12,7 +12,7 @@ import pe.edu.upc.inmovisiom.entities.Usuario;
 public interface IUsuarioRepository extends JpaRepository<Usuario,Integer> {
 
     @Modifying
-    @Query("delete from Rol r where r.idRol = :id")
+    @Query("delete from Usuario u where u.idUser = :id")
     void deleteuserid(@Param("id") Integer id);
 
 

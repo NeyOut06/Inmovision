@@ -39,7 +39,7 @@ public class Usuario implements Serializable
     private LocalDate fecha_registro;
     private Boolean enabled;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "user_id")
     private List<Rol> roles;
 

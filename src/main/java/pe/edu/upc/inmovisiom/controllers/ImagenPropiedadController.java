@@ -7,6 +7,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.inmovisiom.dtos.ImagenPropiedadDTO;
 import pe.edu.upc.inmovisiom.entities.ImagenPropiedad;
+import pe.edu.upc.inmovisiom.entities.Propiedad;
 import pe.edu.upc.inmovisiom.servicesinterfaces.IImagenPropiedadService;
 
 import java.util.List;
@@ -31,9 +32,16 @@ public class ImagenPropiedadController {
     @PostMapping
     @PreAuthorize("hasAnyAuthority('ADMIN', 'ARRENDADOR')")
     public void insertar(@RequestBody ImagenPropiedadDTO dto) {
-        ModelMapper m = new ModelMapper();
-        ImagenPropiedad i = m.map(dto, ImagenPropiedad.class);
-        iS.insert(i);
+        ImagenPropiedad imagen = new ImagenPropiedad();
+        imagen.setUrlImagen(dto.getUrlImagen());
+        imagen.setDescripcion(dto.getDescripcion());
+
+        Propiedad propiedad = new Propiedad();
+        propiedad.setIdPropiedad(dto.getIdPropiedad());
+
+        imagen.setPropiedad(propiedad);
+
+        iS.insert(imagen);
     }
 
     @GetMapping("/{id}")

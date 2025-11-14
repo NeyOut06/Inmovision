@@ -2,6 +2,7 @@ package pe.edu.upc.inmovisiom.servicesimplements;
 
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import pe.edu.upc.inmovisiom.entities.Usuario;
 import pe.edu.upc.inmovisiom.repositories.IRolRepository;
@@ -18,6 +19,9 @@ public class UsuarioServiceImplement implements IUsuarioService {
     @Autowired
     private IRolRepository rS;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @Override
     public List<Usuario> list() {
         return uS.findAll();
@@ -25,6 +29,8 @@ public class UsuarioServiceImplement implements IUsuarioService {
 
     @Override
     public void insert(Usuario usuario) {
+
+        usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
         uS.save(usuario);
     }
 
@@ -42,7 +48,20 @@ public class UsuarioServiceImplement implements IUsuarioService {
 
     @Override
     public void update(Usuario usuario) {
-        uS.save(usuario);
+        Usuario existente = uS.findById(usuario.getIdUser()).orElseThrow();
+
+        existente.setNombre(usuario.getNombre());
+        existente.setApellido(usuario.getApellido());
+        existente.setCorreo(usuario.getCorreo());
+        existente.setTelefono(usuario.getTelefono());
+        existente.setFotourl(usuario.getFotourl());
+        existente.setEnabled(usuario.getEnabled());
+
+        if (usuario.getRoles() == null || usuario.getRoles().isEmpty()) {
+            usuario.setRoles(existente.getRoles());
+        }
+
+        uS.save(existente);
     }
 
     @Override

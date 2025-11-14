@@ -6,6 +6,7 @@ import pe.edu.upc.inmovisiom.entities.Usuario;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 public class PropiedadDTO {
 
@@ -29,6 +30,7 @@ public class PropiedadDTO {
     @JsonIgnoreProperties({"roles", "username", "password", "apellido", "telefono fotourl", "fecha_registro", "correo", "telefono", "fotourl","enabled"})
     private Usuario usuario;
     private Distrito distrito;
+    private List<ImagenPropiedadDTO> imagenes;
 
 
     public Integer getIdPropiedad() {
@@ -181,5 +183,13 @@ public class PropiedadDTO {
 
     public void setDistrito(Distrito distrito) {
         this.distrito = distrito;
+    }
+
+    public List<ImagenPropiedadDTO> getImagenes() {
+        return imagenes;
+    }
+
+    public void setImagenes(List<ImagenPropiedadDTO> imagenes) {
+        this.imagenes = imagenes;
     }
 }

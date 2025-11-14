@@ -73,6 +73,10 @@ public class Propiedad {
     @JoinColumn(name = "idDistrito", nullable = false)
     private Distrito distrito;
 
+    @OneToMany(mappedBy = "propiedad",cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private List<ImagenPropiedad> imagenes;
+
+
 
 
     public Propiedad() {
@@ -230,5 +234,11 @@ public class Propiedad {
         this.distrito = distrito;
     }
 
+    public List<ImagenPropiedad> getImagenes() {
+        return imagenes;
+    }
 
+    public void setImagenes(List<ImagenPropiedad> imagenes) {
+        this.imagenes = imagenes;
+    }
 }
