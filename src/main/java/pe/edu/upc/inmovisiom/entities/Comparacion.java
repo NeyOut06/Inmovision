@@ -11,11 +11,16 @@ public class Comparacion {
     private int idComparacion;
 
     @ManyToOne
-    @JoinColumn(name = "idUsuario", nullable = false)
+    @JoinColumn(name = "idUser", nullable = false)
     private Usuario usuario;
 
-    @Column(name = "propiedades", columnDefinition = "text")
-    private String propiedades;
+    @ManyToOne
+    @JoinColumn(name = "idPropiedad1", nullable = false)
+    private Propiedad propiedad1;
+
+    @ManyToOne
+    @JoinColumn(name = "idPropiedad2", nullable = false)
+    private Propiedad propiedad2;
 
     public Comparacion() {}
 
@@ -35,11 +40,19 @@ public class Comparacion {
         this.usuario = usuario;
     }
 
-    public String getPropiedades() {
-        return propiedades;
+    public Propiedad getPropiedad1() {
+        return propiedad1;
     }
 
-    public void setPropiedades(String propiedades) {
-        this.propiedades = propiedades;
+    public void setPropiedad1(Propiedad propiedad1) {
+        this.propiedad1 = propiedad1;
+    }
+
+    public Propiedad getPropiedad2() {
+        return propiedad2;
+    }
+
+    public void setPropiedad2(Propiedad propiedad2) {
+        this.propiedad2 = propiedad2;
     }
 }

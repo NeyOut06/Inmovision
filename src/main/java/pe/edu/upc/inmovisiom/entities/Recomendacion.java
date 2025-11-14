@@ -19,7 +19,7 @@ public class Recomendacion {
     private LocalDate fecha;
 
     @ManyToOne
-    @JoinColumn(name = "idUsuario", nullable = false)
+    @JoinColumn(name = "idUser", nullable = false)
     private Usuario usuario;
 
     @ManyToOne
