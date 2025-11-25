@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import pe.edu.upc.inmovisiom.dtos.ReportePropiedadesPorDistritoDTO;
 import pe.edu.upc.inmovisiom.entities.ImagenPropiedad;
 import pe.edu.upc.inmovisiom.entities.Propiedad;
+import pe.edu.upc.inmovisiom.repositories.ICalificacionRepository;
 import pe.edu.upc.inmovisiom.repositories.IPropiedadRepository;
 import pe.edu.upc.inmovisiom.servicesinterfaces.IPropiedadService;
 
@@ -39,7 +40,6 @@ public class PropiedadServiceImplement implements IPropiedadService {
     @Override
     public void delete(int id) {
         pS.deleteById(id);
-
     }
 
     @Override

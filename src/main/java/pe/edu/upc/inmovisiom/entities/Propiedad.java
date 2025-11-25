@@ -1,5 +1,7 @@
 package pe.edu.upc.inmovisiom.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
@@ -63,23 +65,49 @@ public class Propiedad {
     @Column(name = "notas", length = 500)
     private String notas;
 
-    // 🔹 Relación con Usuario (muchas propiedades pueden ser de un usuario)
     @ManyToOne
     @JoinColumn(name = "idUser", nullable = false)
+    @JsonIgnoreProperties({
+            "propiedades", "calificaciones", "visitas", "roles",
+            "mensajes", "comparaciones", "recomendaciones"
+    })
     private Usuario usuario;
 
-    // 🔹 Relación con Distrito (muchas propiedades en un distrito)
     @ManyToOne
     @JoinColumn(name = "idDistrito", nullable = false)
     private Distrito distrito;
 
     @OneToMany(mappedBy = "propiedad",cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<ImagenPropiedad> imagenes;
 
 
 
 
     public Propiedad() {
+    }
+
+    public Propiedad(Integer idPropiedad, String titulo, String descripcion, double precio, String tipo, String categoria, String direccion, LocalDate fechaPublicacion, String estado, int metrosCuadrados, int habitaciones, int banos, Boolean destacada, BigDecimal latitud, BigDecimal longitud, String urlVr, String notas, Usuario usuario, Distrito distrito, List<ImagenPropiedad> imagenes) {
+        this.idPropiedad = idPropiedad;
+        this.titulo = titulo;
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.tipo = tipo;
+        this.categoria = categoria;
+        this.direccion = direccion;
+        this.fechaPublicacion = fechaPublicacion;
+        this.estado = estado;
+        this.metrosCuadrados = metrosCuadrados;
+        this.habitaciones = habitaciones;
+        this.banos = banos;
+        this.destacada = destacada;
+        this.latitud = latitud;
+        this.longitud = longitud;
+        this.urlVr = urlVr;
+        this.notas = notas;
+        this.usuario = usuario;
+        this.distrito = distrito;
+        this.imagenes = imagenes;
     }
 
     public Integer getIdPropiedad() {

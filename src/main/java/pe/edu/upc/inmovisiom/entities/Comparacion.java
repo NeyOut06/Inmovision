@@ -1,5 +1,6 @@
 package pe.edu.upc.inmovisiom.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 @Entity
@@ -12,10 +13,18 @@ public class Comparacion {
 
     @ManyToOne
     @JoinColumn(name = "idUsuario", nullable = false)
+    @JsonIgnoreProperties({"roles", "username", "password", "apellido", "telefono fotourl", "fecha_registro", "correo", "telefono", "fotourl","enabled"})
     private Usuario usuario;
 
-    @Column(name = "propiedades", columnDefinition = "text")
-    private String propiedades;
+    @ManyToOne
+    @JoinColumn(name = "idPropiedad1", nullable = false)
+    @JsonIgnoreProperties({"usuario", "fechaPublicacion", "habitaciones", "banos","estado","metrosCuadrados","destacada","latitud", "longitud", "urlVr" , "notas" , "imagenes" , "urlImagen"})
+    private Propiedad propiedad1;
+
+    @ManyToOne
+    @JoinColumn(name = "idPropiedad2", nullable = false)
+    @JsonIgnoreProperties({"usuario", "fechaPublicacion", "habitaciones", "banos","estado","metrosCuadrados","destacada","latitud", "longitud", "urlVr" , "notas" , "imagenes" , "urlImagen"})
+    private Propiedad propiedad2;
 
     public Comparacion() {}
 
@@ -35,11 +44,19 @@ public class Comparacion {
         this.usuario = usuario;
     }
 
-    public String getPropiedades() {
-        return propiedades;
+    public Propiedad getPropiedad1() {
+        return propiedad1;
     }
 
-    public void setPropiedades(String propiedades) {
-        this.propiedades = propiedades;
+    public void setPropiedad1(Propiedad propiedad1) {
+        this.propiedad1 = propiedad1;
+    }
+
+    public Propiedad getPropiedad2() {
+        return propiedad2;
+    }
+
+    public void setPropiedad2(Propiedad propiedad2) {
+        this.propiedad2 = propiedad2;
     }
 }

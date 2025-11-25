@@ -1,6 +1,8 @@
 package pe.edu.upc.inmovisiom.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -25,10 +27,12 @@ public class Calificacion {
 
     @ManyToOne
     @JoinColumn(name = "idUsuario", nullable = false)
+    @JsonIgnoreProperties({"roles", "username", "password", "apellido", "telefono fotourl", "fecha_registro", "correo", "telefono", "fotourl","enabled"})
     private Usuario usuario;
 
     @ManyToOne
     @JoinColumn(name = "idPropiedad", nullable = false)
+    @JsonIgnoreProperties({"usuario", "fechaPublicacion", "habitaciones", "banos","distrito","estado","metrosCuadrados","destacada","latitud", "longitud", "urlVr" , "notas" , "imagenes" , "urlImagen"})
     private Propiedad propiedad;
 
     public Calificacion() {}

@@ -1,5 +1,7 @@
 package pe.edu.upc.inmovisiom.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -41,6 +43,7 @@ public class Usuario implements Serializable
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "user_id")
+    @JsonIgnoreProperties("usuarios") // 👈 no serializar usuarios dentro de Rol
     private List<Rol> roles;
 
 

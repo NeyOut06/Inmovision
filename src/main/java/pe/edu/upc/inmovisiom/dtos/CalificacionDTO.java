@@ -13,7 +13,7 @@ public class CalificacionDTO {
     private LocalDate fecha;
     @JsonIgnoreProperties({"roles", "username", "password", "apellido", "telefono fotourl", "fecha_registro", "correo", "telefono", "fotourl","enabled"})
     private Usuario usuario;
-    @JsonIgnoreProperties({"usuario", "fechaPublicacion", "habitaciones", "banos"})
+    @JsonIgnoreProperties({"usuario", "fechaPublicacion", "habitaciones", "banos","distrito"})
     private Propiedad propiedad;
 
     public Integer getIdCalificacion() {
