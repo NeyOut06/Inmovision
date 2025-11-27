@@ -9,7 +9,6 @@ public class MensajeDTO {
 
     private Integer idMensaje;
     private String contenido;
-    private String enviadoPor;
     private LocalDate enviadoEn;
     @JsonIgnoreProperties({"roles", "username", "password", "apellido", "telefono fotourl", "fecha_registro", "correo", "telefono", "fotourl","enabled"})
     private Usuario usuario;
@@ -32,13 +31,6 @@ public class MensajeDTO {
         this.contenido = contenido;
     }
 
-    public String getEnviadoPor() {
-        return enviadoPor;
-    }
-
-    public void setEnviadoPor(String enviadoPor) {
-        this.enviadoPor = enviadoPor;
-    }
 
     public LocalDate getEnviadoEn() {
         return enviadoEn;

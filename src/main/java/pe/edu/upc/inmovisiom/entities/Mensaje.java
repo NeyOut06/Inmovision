@@ -16,8 +16,7 @@ public class Mensaje {
     @Column(name = "contenido", columnDefinition = "TEXT", nullable = false)
     private String contenido;
 
-    @Column(name = "enviado_por", length = 20, nullable = false)
-    private String enviadoPor; // 'comprador' o 'vendedor'
+
 
     @Column(name = "enviado_en", nullable = false)
     private LocalDate enviadoEn;
@@ -48,13 +47,7 @@ public class Mensaje {
         this.contenido = contenido;
     }
 
-    public String getEnviadoPor() {
-        return enviadoPor;
-    }
 
-    public void setEnviadoPor(String enviadoPor) {
-        this.enviadoPor = enviadoPor;
-    }
 
     public LocalDate getEnviadoEn() {
         return enviadoEn;
