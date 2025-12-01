@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -61,10 +62,13 @@ public class WebSecurityConfig {
         //Desde Spring Boot 3.1+
         httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
+                .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(req -> req
                         .requestMatchers("/login", "/v3/api-docs/**",
                                 "/swagger-ui.html",
                                 "/swagger-ui/**", "/", "/health", "/api/status").permitAll()
+                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll() // 👈 permitir preflight
+
                         .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults())
