@@ -21,7 +21,7 @@ public class ImagenPropiedadController {
     private IImagenPropiedadService iS;
 
     @GetMapping
-    @PreAuthorize("hasAnyAuthority('ADMIN', 'ARRENDADOR')")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'PROPIETARIO')")
     public List<ImagenPropiedadDTO> listar() {
         return iS.list().stream().map(y -> {
             ModelMapper m = new ModelMapper();
@@ -30,7 +30,7 @@ public class ImagenPropiedadController {
     }
 
     @PostMapping
-    @PreAuthorize("hasAnyAuthority('ADMIN', 'ARRENDADOR')")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'PROPIETARIO')")
     public void insertar(@RequestBody ImagenPropiedadDTO dto) {
         ImagenPropiedad imagen = new ImagenPropiedad();
         imagen.setUrlImagen(dto.getUrlImagen());
@@ -45,7 +45,7 @@ public class ImagenPropiedadController {
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAnyAuthority('ADMIN', 'ARRENDADOR')")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'PROPIETARIO')")
     public ResponseEntity<?> listarId(@PathVariable("id") Integer id) {
         ImagenPropiedad i = iS.listId(id);
         if (i == null) {
@@ -59,7 +59,7 @@ public class ImagenPropiedadController {
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAnyAuthority('ADMIN', 'ARRENDADOR')")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'PROPIETARIO')")
     public ResponseEntity<String> eliminar(@PathVariable("id") Integer id) {
         ImagenPropiedad i = iS.listId(id);
         if (i == null) {
@@ -71,7 +71,7 @@ public class ImagenPropiedadController {
     }
 
     @PutMapping
-    @PreAuthorize("hasAnyAuthority('ADMIN', 'ARRENDADOR')")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'PROPIETARIO')")
     public ResponseEntity<String> modificar(@RequestBody ImagenPropiedadDTO dto) {
         ModelMapper m = new ModelMapper();
         ImagenPropiedad i = m.map(dto, ImagenPropiedad.class);

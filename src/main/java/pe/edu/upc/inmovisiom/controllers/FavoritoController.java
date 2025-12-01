@@ -22,7 +22,7 @@ public class FavoritoController {
     private IFavoritoService fS;
 
     @PostMapping
-    @PreAuthorize("hasAnyAuthority('ADMIN', 'COMPRADOR')")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'CLIENTE')")
     public void registrar(@RequestBody FavoritoDTO dto) {
         ModelMapper m = new ModelMapper();
         Favorito favorito = m.map(dto, Favorito.class);

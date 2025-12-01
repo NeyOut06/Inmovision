@@ -21,7 +21,7 @@ public class ComparacionController {
     private IComparacionService cS;
 
     @GetMapping
-    @PreAuthorize("hasAnyAuthority('ADMIN', 'COMPRADOR')")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'CLIENTE')")
     public List<ComparacionDTO> listar() {
         return cS.list().stream().map(y -> {
             ModelMapper m = new ModelMapper();
@@ -30,7 +30,7 @@ public class ComparacionController {
     }
 
     @PostMapping
-    @PreAuthorize("hasAnyAuthority('ADMIN', 'COMPRADOR')")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'CLIENTE')")
     public void insertar(@RequestBody ComparacionDTO dto) {
         ModelMapper m = new ModelMapper();
         Comparacion c = m.map(dto, Comparacion.class);
@@ -38,7 +38,7 @@ public class ComparacionController {
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAnyAuthority('ADMIN', 'COMPRADOR')")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'CLIENTE')")
     public ResponseEntity<?> listarId(@PathVariable("id") Integer id) {
         Comparacion c = cS.listId(id);
         if (c == null) {
@@ -51,7 +51,7 @@ public class ComparacionController {
     }
 
     @PutMapping
-    @PreAuthorize("hasAnyAuthority('ADMIN', 'COMPRADOR')")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'CLIENTE')")
     public ResponseEntity<String> modificar(@RequestBody ComparacionDTO dto) {
         ModelMapper m = new ModelMapper();
         Comparacion c = m.map(dto, Comparacion.class);
@@ -67,7 +67,7 @@ public class ComparacionController {
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAnyAuthority('ADMIN', 'COMPRADOR')")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'CLIENTE')")
     public ResponseEntity<String> eliminar(@PathVariable("id") Integer id) {
         Comparacion c = cS.listId(id);
         if (c == null) {

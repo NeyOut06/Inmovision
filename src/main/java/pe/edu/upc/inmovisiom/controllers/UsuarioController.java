@@ -79,4 +79,6 @@ public class UsuarioController {
         uS.update(u);
         return ResponseEntity.ok("Registro con ID " + u.getIdUser() + " modificado correctamente.");
     }
+
+
 }

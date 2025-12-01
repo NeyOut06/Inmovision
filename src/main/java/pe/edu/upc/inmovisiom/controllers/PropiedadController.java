@@ -22,7 +22,7 @@ public class PropiedadController {
     private IPropiedadService pS;
 
     @GetMapping
-    @PreAuthorize("hasAnyAuthority('ADMIN', 'ARRENDADOR')")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'PROPIETARIO')")
     public List<PropiedadDTO> listar() {
         return pS.list().stream().map(y -> {
             ModelMapper m = new ModelMapper();
@@ -31,7 +31,7 @@ public class PropiedadController {
     }
 
     @PostMapping
-    @PreAuthorize("hasAuthority('ARRENDADOR')")
+    @PreAuthorize("hasAnyAuthority('ADMIN','PROPIETARIO')")
     public void insertar(@RequestBody PropiedadDTO dto) {
         ModelMapper m = new ModelMapper();
         Propiedad p = m.map(dto, Propiedad.class);
@@ -39,7 +39,7 @@ public class PropiedadController {
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAnyAuthority('ADMIN', 'ARRENDADOR')")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'PROPIETARIO')")
     public ResponseEntity<?> listarId(@PathVariable("id") Integer id) {
         Propiedad p = pS.listId(id);
         if (p == null) {
@@ -53,7 +53,7 @@ public class PropiedadController {
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAnyAuthority('ADMIN', 'ARRENDADOR')")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'PROPIETARIO')")
     public ResponseEntity<String> eliminar(@PathVariable("id") Integer id) {
         Propiedad p = pS.listId(id);
         if (p == null) {
@@ -65,7 +65,7 @@ public class PropiedadController {
     }
 
     @PutMapping
-    @PreAuthorize("hasAnyAuthority('ADMIN', 'ARRENDADOR')")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'PROPIETARIO')")
     public ResponseEntity<String> modificar(@RequestBody PropiedadDTO dto) {
         ModelMapper m = new ModelMapper();
         Propiedad p = m.map(dto, Propiedad.class);

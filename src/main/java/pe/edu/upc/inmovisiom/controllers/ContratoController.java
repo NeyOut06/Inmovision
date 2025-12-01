@@ -24,7 +24,7 @@ public class ContratoController {
     private IContratoService cS;
 
     @GetMapping
-    @PreAuthorize("hasAnyAuthority('ADMIN', 'COMPRADOR')")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'CLIENTE')")
     public List<ContratoDTO> listar() {
         return cS.list().stream().map(y -> {
             ModelMapper m = new ModelMapper();
