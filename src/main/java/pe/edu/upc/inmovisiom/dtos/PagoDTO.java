@@ -12,7 +12,6 @@ public class PagoDTO {
     private double monto;
     private String metodoPago;
     private String estado;
-    @JsonIgnoreProperties({"propiedad"})
     private Contrato contrato;
     @JsonIgnoreProperties({"roles", "username", "password", "apellido", "telefono fotourl", "fecha_registro", "correo", "telefono", "fotourl","enabled"})
     private Usuario usuario;

@@ -1,4 +1,4 @@
-package com.example.vegetariano.util;
+package pe.edu.upc.inmovisiom.util;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
