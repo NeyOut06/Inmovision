@@ -14,29 +14,64 @@ import java.io.IOException;
 public class CORS implements Filter {
 
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {}
-
+    public void init(FilterConfig filterConfig) throws ServletException {
+    }
+    //	@Override
+//	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
+//			throws IOException, ServletException {
+//		HttpServletResponse response = (HttpServletResponse) res;
+//		HttpServletRequest request = (HttpServletRequest) req;
+//
+//		String origin = request.getHeader("Origin");
+//		String method = request.getMethod();
+//
+//		if (!"http://localhost:4200".equals(origin)) {
+//			response.sendError(HttpServletResponse.SC_FORBIDDEN, "Origin not allowed");
+//			return;
+//		}
+//
+//
+//		response.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+//		//response.setHeader("Access-Control-Allow-Methods", "DELETE, GET, OPTIONS, PATCH, POST, PUT");
+//		response.setHeader("Access-Control-Allow-Methods", "GET");
+//		response.setHeader("Access-Control-Max-Age", "3600");
+//		response.setHeader("Access-Control-Allow-Headers",
+//				"x-requested-with, authorization, Content-Type, Authorization, credential, X-XSRF-TOKEN");
+//
+//
+//
+//		if ("OPTIONS".equalsIgnoreCase(method)) {
+//			response.setStatus(HttpServletResponse.SC_OK);
+//		} else if (!"GET".equalsIgnoreCase(method)) {
+//			// Rechazar explícitamente métodos distintos de POST
+//			response.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED, "Only GET is allowed");
+//		} else {
+//			chain.doFilter(req, res);
+//		}
+//
+//	}
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
             throws IOException, ServletException {
         HttpServletResponse response = (HttpServletResponse) res;
         HttpServletRequest request = (HttpServletRequest) req;
 
-        // Permitir desde cualquier origen
-        response.setHeader("Access-Control-Allow-Origin", "https://inmovisionfrontend.vercel.app, https://inmovision.onrender.com");
-        response.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, PATCH");
-        response.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization, X-Requested-With");
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Methods", "DELETE, GET, OPTIONS, PATCH, POST, PUT");
         response.setHeader("Access-Control-Max-Age", "3600");
+        response.setHeader("Access-Control-Allow-Headers",
+                "x-requested-with, authorization, Content-Type, Authorization, credential, X-XSRF-TOKEN");
 
-        // Si es preflight (OPTIONS), responder OK
         if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {
             response.setStatus(HttpServletResponse.SC_OK);
-            return;
+        } else {
+            chain.doFilter(req, res);
         }
-
-        chain.doFilter(req, res);
+        // chain.doFilter(req, res);
     }
 
     @Override
-    public void destroy() {}
+    public void destroy() {
+        // TODO Auto-generated method stub
+    }
 }
