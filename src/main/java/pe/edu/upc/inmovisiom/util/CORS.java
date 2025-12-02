@@ -55,7 +55,12 @@ public class CORS implements Filter {
         HttpServletResponse response = (HttpServletResponse) res;
         HttpServletRequest request = (HttpServletRequest) req;
 
-        response.setHeader("Access-Control-Allow-Origin", "https://inmovision-front.onrender.com");
+        String origin = request.getHeader("Origin");
+
+        // Permitir cualquier puerto localhost
+        if (origin != null && origin.startsWith("http://localhost")) {
+            response.setHeader("Access-Control-Allow-Origin", origin);
+        }
         response.setHeader("Access-Control-Allow-Methods", "DELETE, GET, OPTIONS, PATCH, POST, PUT");
         response.setHeader("Access-Control-Max-Age", "3600");
         response.setHeader("Access-Control-Allow-Headers",
