@@ -7,7 +7,6 @@ public class MensajeXUsuarioDTO {
     private String nombre;
     private String apellido;
     private double cantidadMensajes;
-
     private LocalDate ultimaFecha;
 
     public MensajeXUsuarioDTO(Integer idUser, String nombre, String apellido, double cantidadMensajes, LocalDate ultimaFecha) {
@@ -49,8 +48,6 @@ public class MensajeXUsuarioDTO {
     public void setCantidadMensajes(double cantidadMensajes) {
         this.cantidadMensajes = cantidadMensajes;
     }
-
-
 
     public LocalDate getUltimaFecha() {
         return ultimaFecha;

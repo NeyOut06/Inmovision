@@ -50,7 +50,6 @@ public class DistritoController {
         return ResponseEntity.ok(dto);
     }
 
-
     @DeleteMapping("/{id}")
     @PreAuthorize("hasAnyAuthority('ADMIN')")
     public ResponseEntity<String> eliminar(@PathVariable("id") Integer id) {
@@ -74,7 +73,6 @@ public class DistritoController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body("No se puede modificar. No existe un registro con el ID: " + u.getIdDistrito());
         }
-
         dS.update(u);
         return ResponseEntity.ok("Registro con ID " + u.getIdDistrito() + " modificado correctamente.");
     }

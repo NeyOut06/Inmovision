@@ -31,7 +31,6 @@ public class MensajeDTO {
         this.contenido = contenido;
     }
 
-
     public LocalDate getEnviadoEn() {
         return enviadoEn;
     }
