@@ -1,4 +1,4 @@
-package pe.edu.upc.inmovisiom.util;
+package com.example.vegetariano.util;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
@@ -31,11 +31,12 @@ public class CORS implements Filter {
 //		}
 //
 //
-//		response.setHeader("Access-Control-Allow-Origin", "https://inmovision-front.onrender.com");
-//response.setHeader("Access-Control-Allow-Methods", "DELETE, GET, OPTIONS, PATCH, POST, PUT");
-//response.setHeader("Access-Control-Max-Age", "3600");
-//response.setHeader("Access-Control-Allow-Headers",
-//        "x-requested-with, authorization, Content-Type, Authorization, credential, X-XSRF-TOKEN");
+//		response.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+//		//response.setHeader("Access-Control-Allow-Methods", "DELETE, GET, OPTIONS, PATCH, POST, PUT");
+//		response.setHeader("Access-Control-Allow-Methods", "GET");
+//		response.setHeader("Access-Control-Max-Age", "3600");
+//		response.setHeader("Access-Control-Allow-Headers",
+//				"x-requested-with, authorization, Content-Type, Authorization, credential, X-XSRF-TOKEN");
 //
 //
 //
@@ -55,12 +56,7 @@ public class CORS implements Filter {
         HttpServletResponse response = (HttpServletResponse) res;
         HttpServletRequest request = (HttpServletRequest) req;
 
-        String origin = request.getHeader("Origin");
-
-        // Permitir cualquier puerto localhost
-        if (origin != null && origin.startsWith("http://localhost")) {
-            response.setHeader("Access-Control-Allow-Origin", origin);
-        }
+        response.setHeader("Access-Control-Allow-Origin", "*");
         response.setHeader("Access-Control-Allow-Methods", "DELETE, GET, OPTIONS, PATCH, POST, PUT");
         response.setHeader("Access-Control-Max-Age", "3600");
         response.setHeader("Access-Control-Allow-Headers",

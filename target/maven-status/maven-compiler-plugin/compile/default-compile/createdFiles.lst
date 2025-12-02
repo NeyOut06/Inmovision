@@ -11,6 +11,7 @@ pe\edu\upc\inmovisiom\dtos\RecomendacionDTO.class
 pe\edu\upc\inmovisiom\servicesimplements\ImagenPropiedadServiceImplement.class
 pe\edu\upc\inmovisiom\securities\JwtAuthenticationEntryPoint.class
 pe\edu\upc\inmovisiom\dtos\RolDTO.class
+com\example\vegetariano\util\CORS.class
 pe\edu\upc\inmovisiom\dtos\ReporteRecomendacionesPorPropiedadDTO.class
 pe\edu\upc\inmovisiom\controllers\ComparacionController.class
 pe\edu\upc\inmovisiom\controllers\ListaFavoritosController.class
@@ -59,6 +60,7 @@ pe\edu\upc\inmovisiom\repositories\IUsuarioRepository.class
 pe\edu\upc\inmovisiom\controllers\PropiedadController.class
 pe\edu\upc\inmovisiom\entities\Rol.class
 pe\edu\upc\inmovisiom\servicesimplements\MensajeServiceImplement.class
+pe\edu\upc\inmovisiom\config\CloudinaryConfig.class
 pe\edu\upc\inmovisiom\dtos\MensajeDTO.class
 pe\edu\upc\inmovisiom\controllers\VisitaController.class
 pe\edu\upc\inmovisiom\repositories\IPropiedadRepository.class
@@ -79,6 +81,7 @@ pe\edu\upc\inmovisiom\servicesinterfaces\IVisitaService.class
 pe\edu\upc\inmovisiom\entities\Comparacion.class
 pe\edu\upc\inmovisiom\dtos\ReporteFavoritosPorPropiedadDTO.class
 pe\edu\upc\inmovisiom\servicesimplements\SimulacionPrecioServiceImplement.class
+pe\edu\upc\inmovisiom\controllers\UploadController.class
 pe\edu\upc\inmovisiom\dtos\PropiedadDTO.class
 pe\edu\upc\inmovisiom\repositories\IListaFavoritosRepository.class
 pe\edu\upc\inmovisiom\servicesinterfaces\ISimulacionPrecioService.class
