@@ -21,7 +21,6 @@ public class UsuarioController {
     private IUsuarioService uS;
 
     @GetMapping
-    @PreAuthorize("hasAuthority('ADMIN')")
     public List<UsuarioDTOList> list() {
         return uS.list().stream().map(y->{
             ModelMapper m=new ModelMapper();
@@ -38,7 +37,6 @@ public class UsuarioController {
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<?> listarId(@PathVariable("id") Integer id) {
         Usuario u = uS.listId(id);
         if (u == null) {
