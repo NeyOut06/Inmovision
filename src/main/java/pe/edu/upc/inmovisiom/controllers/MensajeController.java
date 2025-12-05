@@ -24,7 +24,7 @@ public class MensajeController {
     private IMensajeService mS;
 
     @GetMapping
-    @PreAuthorize("hasAnyAuthority('ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ADMIN','PROPIETARIO','CLIENTE')")
     public List<MensajeDTO> listar() {
         return mS.list().stream().map(y -> {
             ModelMapper m = new ModelMapper();
@@ -33,6 +33,7 @@ public class MensajeController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyAuthority('ADMIN','PROPIETARIO','CLIENTE')")
     public void insertar(@RequestBody MensajeDTO dto) {
         ModelMapper m = new ModelMapper();
         Mensaje mensaje = m.map(dto, Mensaje.class);
@@ -40,6 +41,7 @@ public class MensajeController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAnyAuthority('ADMIN','PROPIETARIO','CLIENTE')")
     public ResponseEntity<?> listarId(@PathVariable("id") Integer id) {
         Mensaje mensaje = mS.listId(id);
         if (mensaje == null) {
@@ -53,6 +55,7 @@ public class MensajeController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyAuthority('ADMIN','PROPIETARIO','CLIENTE')")
     public ResponseEntity<String> eliminar(@PathVariable("id") Integer id) {
         Mensaje mensaje = mS.listId(id);
         if (mensaje == null) {
@@ -64,6 +67,7 @@ public class MensajeController {
     }
 
     @PutMapping
+    @PreAuthorize("hasAnyAuthority('ADMIN','PROPIETARIO','CLIENTE')")
     public ResponseEntity<String> modificar(@RequestBody MensajeDTO dto) {
         ModelMapper m = new ModelMapper();
         Mensaje mensaje = m.map(dto, Mensaje.class);
@@ -79,6 +83,7 @@ public class MensajeController {
     }
 
     @GetMapping("/por-usuario")
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     public List<MensajeXUsuarioDTO> mensajesPorUsuario(
             @RequestParam(required = false)
             @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate inicio,

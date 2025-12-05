@@ -20,8 +20,9 @@ import java.util.stream.Collectors;
 public class DistritoController {
     @Autowired
     private IDistritoService dS;
+
     @GetMapping
-    @PreAuthorize("hasAnyAuthority('ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ADMIN','PROPIETARIO','CLIENTE')")
     public List<DistritoDTO> listar(){
         return dS.list().stream().map(y->{
             ModelMapper m = new ModelMapper();
@@ -37,7 +38,7 @@ public class DistritoController {
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAnyAuthority('ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ADMIN','PROPIETARIO','CLIENTE')")
     public ResponseEntity<?> listarId(@PathVariable("id") Integer id) {
         Distrito u = dS.listId(id);
         if (u == null) {

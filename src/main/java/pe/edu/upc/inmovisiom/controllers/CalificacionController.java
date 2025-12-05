@@ -22,6 +22,7 @@ public class CalificacionController {
     private ICalificacionService cS;
 
     @GetMapping
+    @PreAuthorize("hasAnyAuthority('ADMIN','PROPIETARIO','CLIENTE')")
     public List<CalificacionDTO> listar() {
         return cS.list().stream().map(y -> {
             ModelMapper m = new ModelMapper();
@@ -30,6 +31,7 @@ public class CalificacionController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyAuthority('ADMIN','CLIENTE')")
     public void insertar(@RequestBody CalificacionDTO dto) {
         ModelMapper m = new ModelMapper();
         Calificacion c = m.map(dto, Calificacion.class);
@@ -37,6 +39,7 @@ public class CalificacionController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAnyAuthority('ADMIN','PROPIETARIO','CLIENTE')")
     public ResponseEntity<?> listarId(@PathVariable("id") Integer id) {
         Calificacion c = cS.listId(id);
         if (c == null) {
@@ -50,6 +53,7 @@ public class CalificacionController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyAuthority('ADMIN','CLIENTE')")
     public ResponseEntity<String> eliminar(@PathVariable("id") Integer id) {
         Calificacion c = cS.listId(id);
         if (c == null) {
@@ -61,6 +65,7 @@ public class CalificacionController {
     }
 
     @PutMapping
+    @PreAuthorize("hasAnyAuthority('ADMIN','CLIENTE')")
     public ResponseEntity<String> modificar(@RequestBody CalificacionDTO dto) {
         ModelMapper m = new ModelMapper();
         Calificacion c = m.map(dto, Calificacion.class);
@@ -76,6 +81,7 @@ public class CalificacionController {
     }
 
     @GetMapping("/ReporteCalificacionPromedio")
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     public ResponseEntity<List<ReporteCalificacionPromedioDTO>> reportePromedioCalificacion() {
         List<ReporteCalificacionPromedioDTO> lista = cS.reportePromedioCalificacion();
         return new ResponseEntity<>(lista, HttpStatus.OK);

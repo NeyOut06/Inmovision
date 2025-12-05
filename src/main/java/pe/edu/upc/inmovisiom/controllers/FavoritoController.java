@@ -30,6 +30,7 @@ public class FavoritoController {
     }
 
     @GetMapping
+    @PreAuthorize("hasAnyAuthority('ADMIN','CLIENTE')")
     public List<FavoritoDTO> listar() {
         return fS.list().stream().map(y -> {
             ModelMapper m = new ModelMapper();
@@ -38,6 +39,7 @@ public class FavoritoController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAnyAuthority('ADMIN','CLIENTE')")
     public FavoritoDTO listarId(@PathVariable("id") Integer id) {
         ModelMapper m = new ModelMapper();
         FavoritoDTO dto = m.map(fS.listId(id), FavoritoDTO.class);
@@ -45,6 +47,7 @@ public class FavoritoController {
     }
 
     @PutMapping
+    @PreAuthorize("hasAnyAuthority('ADMIN','CLIENTE')")
     public void modificar(@RequestBody FavoritoDTO dto) {
         ModelMapper m = new ModelMapper();
         Favorito favorito = m.map(dto, Favorito.class);
@@ -52,11 +55,13 @@ public class FavoritoController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyAuthority('ADMIN','CLIENTE')")
     public void eliminar(@PathVariable("id") Integer id) {
         fS.delete(id);
     }
 
     @GetMapping("/ReporteFavoritosPorPropiedad")
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     public ResponseEntity<List<ReporteFavoritosPorPropiedadDTO>> reporteFavoritosPorPropiedad() {
         List<ReporteFavoritosPorPropiedadDTO> lista = fS.reporteFavoritosPorPropiedad();
         return new ResponseEntity<>(lista, HttpStatus.OK);

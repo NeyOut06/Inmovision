@@ -22,7 +22,7 @@ public class PropiedadController {
     private IPropiedadService pS;
 
     @GetMapping
-    @PreAuthorize("hasAnyAuthority('ADMIN', 'PROPIETARIO')")
+    @PreAuthorize("hasAnyAuthority('ADMIN','PROPIETARIO','CLIENTE')")
     public List<PropiedadDTO> listar() {
         return pS.list().stream().map(y -> {
             ModelMapper m = new ModelMapper();
@@ -39,7 +39,7 @@ public class PropiedadController {
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAnyAuthority('ADMIN', 'PROPIETARIO')")
+    @PreAuthorize("hasAnyAuthority('ADMIN','PROPIETARIO','CLIENTE')")
     public ResponseEntity<?> listarId(@PathVariable("id") Integer id) {
         Propiedad p = pS.listId(id);
         if (p == null) {
@@ -53,7 +53,7 @@ public class PropiedadController {
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAnyAuthority('ADMIN', 'PROPIETARIO')")
+    @PreAuthorize("hasAnyAuthority('ADMIN','PROPIETARIO')")
     public ResponseEntity<String> eliminar(@PathVariable("id") Integer id) {
         Propiedad p = pS.listId(id);
         if (p == null) {

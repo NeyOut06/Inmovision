@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.inmovisiom.dtos.ReporteVisitasPorPropiedadDTO;
 import pe.edu.upc.inmovisiom.dtos.VisitaDTO;
@@ -15,6 +16,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/visitas")
+@PreAuthorize("hasAnyAuthority('ADMIN','PROPIETARIO','CLIENTE')")
 public class VisitaController {
 
     @Autowired

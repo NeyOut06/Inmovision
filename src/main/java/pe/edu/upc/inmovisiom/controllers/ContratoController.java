@@ -24,7 +24,8 @@ public class ContratoController {
     private IContratoService cS;
 
     @GetMapping
-    @PreAuthorize("hasAnyAuthority('ADMIN', 'CLIENTE')")
+
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'CLIENTE' , 'PROPIETARIO')")
     public List<ContratoDTO> listar() {
         return cS.list().stream().map(y -> {
             ModelMapper m = new ModelMapper();
@@ -33,6 +34,7 @@ public class ContratoController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyAuthority('ADMIN','PROPIETARIO')")
     public void insertar(@RequestBody ContratoDTO dto) {
         ModelMapper m = new ModelMapper();
         Contrato c = m.map(dto, Contrato.class);
@@ -40,6 +42,7 @@ public class ContratoController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAnyAuthority('ADMIN','PROPIETARIO','CLIENTE')")
     public ResponseEntity<?> listarId(@PathVariable("id") Integer id) {
         Contrato c = cS.listId(id);
         if (c == null) {
@@ -53,6 +56,7 @@ public class ContratoController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<String> eliminar(@PathVariable("id") Integer id) {
         Contrato c = cS.listId(id);
         if (c == null) {
@@ -64,6 +68,7 @@ public class ContratoController {
     }
 
     @PutMapping
+    @PreAuthorize("hasAnyAuthority('ADMIN','PROPIETARIO')")
     public ResponseEntity<String> modificar(@RequestBody ContratoDTO dto) {
         ModelMapper m = new ModelMapper();
         Contrato c = m.map(dto, Contrato.class);
@@ -79,6 +84,7 @@ public class ContratoController {
     }
 
     @GetMapping("/top_distritos")
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     public List<TopDistritoContratosDTO> obtenerDistritos(){
         List<TopDistritoContratosDTO> dtoList = new ArrayList<>();
         List<String[]> filaList = cS.distritoTop();
@@ -92,6 +98,7 @@ public class ContratoController {
     }
 
     @GetMapping("/monto_promedio")
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     public List<PromedioMontoPorTipoDTO> obtenerPromedio(){
         List<PromedioMontoPorTipoDTO> dtoList = new ArrayList<>();
         List<String[]> filaList = cS.distritoTop();

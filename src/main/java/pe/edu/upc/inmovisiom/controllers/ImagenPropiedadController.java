@@ -21,7 +21,7 @@ public class ImagenPropiedadController {
     private IImagenPropiedadService iS;
 
     @GetMapping
-    @PreAuthorize("hasAnyAuthority('ADMIN', 'PROPIETARIO')")
+    @PreAuthorize("hasAnyAuthority('ADMIN','PROPIETARIO','CLIENTE')")
     public List<ImagenPropiedadDTO> listar() {
         return iS.list().stream().map(y -> {
             ModelMapper m = new ModelMapper();
@@ -45,7 +45,7 @@ public class ImagenPropiedadController {
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAnyAuthority('ADMIN', 'PROPIETARIO')")
+    @PreAuthorize("hasAnyAuthority('ADMIN','PROPIETARIO','CLIENTE')")
     public ResponseEntity<?> listarId(@PathVariable("id") Integer id) {
         ImagenPropiedad i = iS.listId(id);
         if (i == null) {

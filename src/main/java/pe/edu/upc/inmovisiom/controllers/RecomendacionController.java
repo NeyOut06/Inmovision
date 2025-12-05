@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.inmovisiom.dtos.RecomendacionDTO;
 import pe.edu.upc.inmovisiom.dtos.ReporteRecomendacionesPorPropiedadDTO;
@@ -21,6 +22,7 @@ public class RecomendacionController {
     private IRecomendacionService rS;
 
     @PostMapping
+    @PreAuthorize("hasAnyAuthority('ADMIN','CLIENTE')")
     public void registrar(@RequestBody RecomendacionDTO dto) {
         ModelMapper m = new ModelMapper();
         Recomendacion r = m.map(dto, Recomendacion.class);
@@ -28,6 +30,7 @@ public class RecomendacionController {
     }
 
     @GetMapping
+    @PreAuthorize("hasAnyAuthority('ADMIN','PROPIETARIO','CLIENTE')")
     public List<RecomendacionDTO> listar() {
         return rS.list().stream().map(y -> {
             ModelMapper m = new ModelMapper();
@@ -36,12 +39,14 @@ public class RecomendacionController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAnyAuthority('ADMIN','PROPIETARIO','CLIENTE')")
     public RecomendacionDTO listarId(@PathVariable("id") Integer id) {
         ModelMapper m = new ModelMapper();
         return m.map(rS.listId(id), RecomendacionDTO.class);
     }
 
     @PutMapping
+    @PreAuthorize("hasAnyAuthority('ADMIN','CLIENTE')")
     public void modificar(@RequestBody RecomendacionDTO dto) {
         ModelMapper m = new ModelMapper();
         Recomendacion r = m.map(dto, Recomendacion.class);
@@ -49,6 +54,7 @@ public class RecomendacionController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyAuthority('ADMIN','CLIENTE')")
     public void eliminar(@PathVariable("id") Integer id) {
         rS.delete(id);
     }
